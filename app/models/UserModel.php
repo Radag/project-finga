@@ -77,10 +77,11 @@ class UserModel extends BaseModel
             'STATE' => $values['state'],
             'D_STATE' => $values['d_state']),
           'WHERE ID_USER=%i', $idUser);
-        
+
+		$passwords = new Passwords();
         if (!empty($values['password1'])) {
 			$this->db->query('UPDATE FINGA_USERS SET', array(
-                'PASSWORD' => array('SHA1(%s)', $values['password1'])),
+                'PASSWORD' => $passwords->hash($values['password1'])),
             'WHERE ID_USER=%i', $idUser); 
         }
 

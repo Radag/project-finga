@@ -3,6 +3,7 @@ namespace App\AdminModule\Presenters;
 use Nette\Application\UI\Form;
 use App\Constant;
 use IPub\VisualPaginator\Components as VisualPaginator;
+use Nette\Utils\Image;
 use Tracy\Debugger;
 
 /**
@@ -236,7 +237,7 @@ class ShopPresenter extends AdminPresenter {
             $values['image'] = $this->imageModel->getImageId($filename . '.png');
             //uložení náhledu
             $image = $form['image']->getValue()->toImage();
-            $image->resize(175, NULL, NImage::ENLARGE);
+            $image->resize(175, NULL, Image::ENLARGE);
             $image->crop(0, 0, 175, 130);
             $filename = $this->imageModel->getImageMaxId();
             $image->save(WWW_DIR . "/images/product_images/preview/" . $filename . ".png", 100, Image::PNG);
@@ -291,7 +292,7 @@ class ShopPresenter extends AdminPresenter {
             $values['image'] = $this->imageModel->getImageId($filename . '.png');
             //uložení náhledu
             $image = $form['image']->getValue()->toImage();
-            $image->resize(175, NULL, NImage::ENLARGE);
+            $image->resize(175, NULL, Image::ENLARGE);
             $image->crop(0, 0, 175, 130);
             $filename = $this->imageModel->getImageMaxId();
             $image->save(WWW_DIR . "/images/product_images/preview/" . $filename . ".png", 100, Image::PNG);
