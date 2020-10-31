@@ -185,13 +185,19 @@ class HomepagePresenter extends MainPresenter
             $form->onSuccess[0] = [$this, 'editProfileFormSubmitted'];
             return $form;
         }
-        
-        public function registrationFormSubmitted($form)
+
+    public function registrationFormSubmitted($form)
 	{
-                $values = $form->getValues();
-                $this->userModel->insertUser($values);
-                $this->getUser()->login($values->email, $values->password1);
-                $this->redirect('Homepage:');
+		$values = $form->getValues();
+		$this->userModel->insertUser($values);
+		$this->getUser()->login($values->email, $values->password1);
+		$section = $this->getSession('url_redirect');
+		if($section->redirect_to) {
+			$this->redirect($section->redirect_to);
+			unset($section->redirect_to);
+		} else {
+			$this->redirect('Homepage:default');
+		}
 	}
         
         public function editProfileFormSubmitted($form)

@@ -5,6 +5,8 @@ namespace App\MainModule\Presenters;
 use App\Di\MailgunSender;
 use App\Constant;
 use Dibi\Translator;
+use Nette\Application\UI\Form;
+use Tracy\Debugger;
 
 /**
  * Sign in/out presenters.
@@ -199,6 +201,8 @@ class ShoppingCartPresenter extends MainPresenter
                 unset($shoppingCart->products);
                 $this->redirect('ShoppingCart:payment');
             } else {
+				$section = $this->getSession('url_redirect');
+				$section->redirect_to = ':' . $this->getRequest()->getPresenterName()  . ":payment";
                 $this->redirect('Sign:in');
             }
         }
@@ -272,10 +276,10 @@ class ShoppingCartPresenter extends MainPresenter
                 
         protected function createComponentEditAddressForm()
 	{
-		$form = new \Nette\Application\UI\Form();
+		$form = new Form();
 		$form->addText('email', 'Emailová adresa*')
                      ->setRequired('Vložte prosím svůj email.')
-                     ->addRule(NForm::EMAIL, 'Email není zadán správně.')
+                     ->addRule(Form::EMAIL, 'Email není zadán správně.')
                      ->setAttribute('class', 'register_input');
 		$form->addText('name', 'Jméno*')
                      ->setRequired('Vložte prosím své jméno.')
@@ -301,7 +305,7 @@ class ShoppingCartPresenter extends MainPresenter
 		$form->addSubmit('send', '» Odeslat')
                      ->setAttribute('class', 'button');
 
-		$form->onSuccess[] = callback($this, 'editAddressFormSubmitted');
+		$form->onSuccess[] = [$this, 'editAddressFormSubmitted'];
                 $form->setTranslator($this->translator);
                 
                 

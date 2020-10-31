@@ -99,7 +99,7 @@ class SignPresenter extends MainPresenter
             $this->redirect('lostPassword');
         }
         
-	public function signInFormSubmitted($form)
+	public function signInFormSubmitted(Form $form)
 	{
 		try {
 			$values = $form->getValues();
@@ -109,23 +109,36 @@ class SignPresenter extends MainPresenter
 				//$this->getUser()->setExpiration('+ 20 minutes', TRUE);
 			}
 			$this->getUser()->login($values->username, $values->password);
-			$this->redirect('Homepage:default');
-
 		} catch (\Exception $e) {
 			$form->addError($e->getMessage());
 		}
+
+		if (!$form->hasErrors()) {
+			$section = $this->getSession('url_redirect');
+			if($section->redirect_to) {
+				$this->redirect($section->redirect_to);
+				unset($section->redirect_to);
+			} else {
+				$this->redirect('Homepage:default');
+			}
+		}
 	}
 
-
+	public function actionIn()
+	{
+		if ($this->user->isLoggedIn()) {
+			$this->redirect('Homepage:default');
+		}
+	}
 
 	public function actionOut()
 	{
 		$this->getUser()->logout();
-                if ($this->lang == 'cs') {
-                    $this->flashMessage('Byl jste odhlášen.');
-                } else {
-                    $this->flashMessage('You have been logged out.');
-                }
+		if ($this->lang == 'cs') {
+			$this->flashMessage('Byl jste odhlášen.');
+		} else {
+			$this->flashMessage('You have been logged out.');
+		}
 		
 		$this->redirect('Homepage:default');
 	}

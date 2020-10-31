@@ -1,7 +1,7 @@
 {block content}
 <div id="content_left_text">
         {if !empty($flashes)}
-        <div id="confirm">{_messages.shop.added_to_basket} <a href=>{_messages.shop.ad_basket}</a></div>
+        <div id="confirm">{_messages.shop.added_to_basket} <a n:href="ShoppingCart:default">{_messages.shop.ad_basket}</a></div>
         {/if}
         <h1>E-Shop</h1>
         <div id="eshop_menu_pos">
