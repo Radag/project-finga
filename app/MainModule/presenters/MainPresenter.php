@@ -27,6 +27,7 @@ class MainPresenter extends BasePresenter {
 
 	public function startup() {
         parent::startup();
+		$this->translatorSessionResolver->setLocale($this->lang == 'en' ? 'en_US' : 'cs_CZ');
 		$this->settings->setLang($this->lang);
         $articlePage = $this->getParameter('article_page');
         $this->template->articles = $this->articleModel->getArticlePreview($articlePage);

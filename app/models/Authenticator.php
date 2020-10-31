@@ -44,7 +44,7 @@ class Authenticator implements \Nette\Security\IAuthenticator
 					$this->db->query("UPDATE FINGA_USERS ", ['PASSWORD' => $passwords->hash($password)], "WHERE ID_USER=?", $row->ID_USER);
 				}
 			} else {
-				if (!md5($password . str_repeat('fingaboard', 10)) != $row->PASSWORD) {
+				if (sha1($password) != $row->PASSWORD) {
 					throw new Nette\Security\AuthenticationException('Špatné uživatelské jméno nebo heslo.', self::INVALID_CREDENTIAL);
 				}
 			}

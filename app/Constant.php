@@ -99,10 +99,10 @@ class Constant  {
     const LINK_DELETED = 1;
     
     //verze javascriptu
-    const JS_VERSION = 10;
+    const JS_VERSION = 11;
     
     //nastavení kde se server nachází
     const NOREPLY_EMAIL = 'noreply@m.fingafingerboards.com';
-    const SERVER_ADRESS = 'http://www.fingafingerboards.com';
+    const SERVER_ADRESS = 'https://www.fingafingerboards.com';
 }
 ?>
