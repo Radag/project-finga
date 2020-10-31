@@ -13,24 +13,10 @@ application:
 session:
 	expiration: 14 days
 
-
-dibi:
-    driver: 'mysqli'
-    host: '127.0.0.1'
-    username: 'root'
-    password: ''
-    database: 'finga'
-    charset: "utf8mb4"
-    lazy: true
-
 di:
 	export:
 		parameters: no
 		tags: no
-
-mailgun:
-    key: 'key-926f0ed9318d18c1ee7f13f844623db5'
-    domain: 'm.fingafingerboards.com'
 
 services:
 	router: App\Router\RouterFactory::createRouter
