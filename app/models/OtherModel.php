@@ -25,7 +25,7 @@ class OtherModel extends BaseModel
     
     public function switchPosterActivity($idPoster, $lang) {
 		$this->db->begin();
-        $state = dibi::query('SELECT ACTIVE FROM FINGA_POSTERS WHERE ID_POSTER=%i AND LANG=%s', $idPoster, $lang)->fetchSingle();
+        $state = $this->db->query('SELECT ACTIVE FROM FINGA_POSTERS WHERE ID_POSTER=%i AND LANG=%s', $idPoster, $lang)->fetchSingle();
         //dibi::query('UPDATE FINGA_POSTERS SET ACTIVE=0');   
         if ($state == 0) {
 			$this->db->query('UPDATE FINGA_POSTERS SET ACTIVE=1 WHERE ID_POSTER=%i AND LANG=%s', $idPoster, $lang);

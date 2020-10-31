@@ -186,11 +186,12 @@ class ShopPresenter extends AdminPresenter {
             // ->setRequired('Vložte prosím popis produktu, do 255 znaků');
         $form->addTextArea('short_text_en', 'Krátký popis anglicky (255 znaků):')
              ->setAttribute('class', 'small');
-        $form->addText('price', 'Cena:')
+        $form->addInteger('price', 'Cena:')
              ->setAttribute('class', 'text');
-        $form->addText('price_usd', 'Cena v usd:')
+        $form->addInteger('price_usd', 'Cena v usd:')
              ->setAttribute('class', 'text');
-        $form->addText('price_eu', 'Cena v eu:')
+        $form->addInteger('price_eu', 'Cena v eu:')
+
              ->setAttribute('class', 'text');
         $form->addSelect('category', 'Kategorie', $this->shopModel->selectCategoriesPairs());
         $form->addHidden('variants_cz');

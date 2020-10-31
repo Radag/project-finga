@@ -79,7 +79,7 @@ class UserModel extends BaseModel
           'WHERE ID_USER=%i', $idUser);
         
         if (!empty($values['password1'])) {
-            dibi::query('UPDATE FINGA_USERS SET', array(
+			$this->db->query('UPDATE FINGA_USERS SET', array(
                 'PASSWORD' => array('SHA1(%s)', $values['password1'])),
             'WHERE ID_USER=%i', $idUser); 
         }

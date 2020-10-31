@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Constant;
+use Nette\Utils\Strings;
 
 /**
  * Model base class.
@@ -69,15 +70,15 @@ class ShopModel extends BaseModel
 		$this->db->query('INSERT INTO SHOP_PRODUCTS', array(
             'NAME_CZ' => $values['name_cz'],
             'NAME_EN' => $values['name_en'],
-            'URL_NAME_CZ' => NStrings::webalize($values['name_cz']),
-            'URL_NAME_EN' => NStrings::webalize($values['name_en']),
+            'URL_NAME_CZ' => Strings::webalize($values['name_cz']),
+            'URL_NAME_EN' => Strings::webalize($values['name_en']),
             'SHORT_TEXT_CZ' => $values['short_text_cz'],
             'SHORT_TEXT_EN' => $values['short_text_en'],
             'TEXT_CZ' => $values['text_cz'],
             'TEXT_EN' => $values['text_en'],
-            'PRICE' => $values['price'],
-            'PRICE_EU' => $values['price_eu'],
-            'PRICE_USD' => $values['price_usd'],
+            'PRICE' => intval($values['price']),
+            'PRICE_EU' => intval($values['price_eu']),
+            'PRICE_USD' => intval($values['price_usd']),
             'ID_IMAGE' => $values['image'],
             'ID_IMAGE_PREVIEW' => $values['imagePr'],
             'ID_USER' => $idUser,
@@ -130,8 +131,8 @@ class ShopModel extends BaseModel
 		$this->db->query('UPDATE SHOP_PRODUCTS SET', array(
             'NAME_CZ' => $values['name_cz'],
             'NAME_EN' => $values['name_en'],
-            'URL_NAME_CZ' => NStrings::webalize($values['name_cz']),
-            'URL_NAME_EN' => NStrings::webalize($values['name_en']),
+            'URL_NAME_CZ' => Strings::webalize($values['name_cz']),
+            'URL_NAME_EN' => Strings::webalize($values['name_en']),
             'SHORT_TEXT_CZ' => $values['short_text_cz'],
             'SHORT_TEXT_EN' => $values['short_text_en'],
             'TEXT_CZ' => $values['text_cz'],
@@ -588,8 +589,8 @@ class ShopModel extends BaseModel
 		$this->db->query('INSERT INTO SHOP_CATEGORIES', array(
             'NAME_CZ' => $values['name_cz'],
             'NAME_EN' => $values['name_en'],
-            'URL_NAME_CZ' => NStrings::webalize($values['name_cz']),
-            'URL_NAME_EN' => NStrings::webalize($values['name_en']),
+            'URL_NAME_CZ' => Strings::webalize($values['name_cz']),
+            'URL_NAME_EN' => Strings::webalize($values['name_en']),
             'STATUS' => Constant::CATEGORY_ACTIVE,
             'PARENT' => $values['parent']
          ));
@@ -599,8 +600,8 @@ class ShopModel extends BaseModel
 		$this->db->query('UPDATE SHOP_CATEGORIES SET ', array(
             'NAME_CZ' => $values['name_cz'],
             'NAME_EN' => $values['name_en'],
-            'URL_NAME_CZ' => NStrings::webalize($values['name_cz']),
-            'URL_NAME_EN' => NStrings::webalize($values['name_en']),
+            'URL_NAME_CZ' => Strings::webalize($values['name_cz']),
+            'URL_NAME_EN' => Strings::webalize($values['name_en']),
             'PARENT' => $values['parent']
          ), " WHERE ID=%i", $values['id_category']);
     }
