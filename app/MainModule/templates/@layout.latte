@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        {if $lang=='cs'}
+	<meta name="description" content="Finga fingerboards - firma zabývající se ruční výrobou dřevěných fingerboardových desek, která byla založena Petrem Ptáčkem v roce 2005.">
+        {else}
+	<meta name="description" content="Finga fingerboards - a company dealing with handmade wooden fingerboard decks, founded and run by Petr Ptáček since 2005.">
+        {/if}
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+	<title>Finga fingerboards</title>
+    <link rel="stylesheet" href="{$basePath}/css/css.css?version={$jsVersion}" type="text/css" />
+	<link rel="icon" href="{$basePath}/images/favicon.ico?version={$jsVersion}" type="image/x-icon"/>
+    <script type="text/javascript" src="{$basePath}/js/jquery.min.js?version={$jsVersion}"></script>
+	<script type="text/javascript" src="{$basePath}/js/netteForms.js?version={$jsVersion}"></script>
+    {*<script src="{$basePath}/js/pwi/js/jquery.blockUI.js?version={$jsVersion}" type="text/javascript"></script>*}
+    {*ifset  $menuActive}
+        {if $menuActive=='gallery'}
+        <script src="{$basePath}/js/pwi/js/jquery.pwi.js?version={$jsVersion}" type="text/javascript"></script>
+        {/if})
+    {/ifset*}
+    <script type="text/javascript" src="{$basePath}/js/fancybox/jquery.fancybox.min.js?version={$jsVersion}"></script>
+	<link rel="stylesheet" type="text/css" href="{$basePath}/js/fancybox/jquery.fancybox.min.css?version={$jsVersion}" media="screen" />
+    <script type="text/javascript" src="{$basePath}/js/js.js?version={$jsVersion}"></script>
+	<meta name="google-site-verification" content="QB5Id9l3DrpY1n4NeuOu9yT5aQVxFb-neiln-v40cGY" />
+</head>
+<body>
+<div id="page">
+	<div id="header">
+    	<div id="manager">
+    	<div id="login">
+    	<p class="account_manager">
+        {if $user->isLoggedIn()}
+            {$user->getIdentity()->EMAIL}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {else}
+    	<a href="/{$lang}/sign/in" class="manager" id="logInButton">{_login}</a>
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	<a href="/{$lang}/registration" class="manager" id="registerButton">{_register}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+        {/if}
+        </p>
+        </div>
+        <div id="shopping_cart">
+        	<div class="shopping_cart_button{ifset $menuActive}{if $menuActive=='shoppingCard'} active{/if}{/ifset}"><a href="/{$lang}/shopping-cart"></a></div>
+        </div>
+    	<div id="language_selection">
+                <a n:href="changeLocale! locale=>'cs_CZ'"><div id="cze" {if $lang=='cs'}class="active"{/if} >Česky</div></a>
+                <a n:href="changeLocale! locale=>'en_US'"><div id="eng" {if $lang=='en'}class="active"{/if} >English</div></a>
+        </div>
+
+        </div>
+        {if $user->isLoggedIn()}
+        <div id="user_manager">
+        	<p class="account_manager">
+        	<a href="/{$lang}/seznam-objednavek" class="manager">{_orders_list}</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/{$lang}/edit-profile" class="manager">{_edit_profile}</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{$presenter->link('Sign:out')}">{_logout}</a>
+            </p>
+        </div>
+        {/if}
+
+        <form style="display:none" id="login_manager" method="post" action="/sign/in?do=signInForm-submit">
+            <div id="login_input_fields">
+                <input type="text" name="username" class="login_input" id="usernameInput" value="{_email}"/>
+                <input type="password" name="password" class="login_input" id="passwordInput" value="{_Heslo}"/>
+                <div id="button_log"><div class="button_normal"><input type="submit" class="button" value="{_login2}"/></div></div>
+            </div>
+            <div class="close_log"><div class="close_log_button"><a id="" href="#">{_hide}</a></div></div>
+            <div id="login_options"><input type="checkbox" name="" value="" style="margin-right:2px;" /> {_permanent_login}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/{$lang}/sign/lost-password">{_forgotten_pass}</a></div>
+        </form>
+        {if $lang=='cs'}
+        <ul id="menu_cze">
+            <li id="m_news_cze" {ifset  $menuActive}{if $menuActive=='homepage'}class="active"{/if}{/ifset}><a href="/{$lang}">{_news}<span></span></a>
+            </li>
+            <li id="m_eshop_cze" {ifset  $menuActive}{if $menuActive=='shop'}class="active"{/if}{/ifset}><a href="/{$lang}/shop">{_eshop}<span></span></a>
+            </li>
+            <li id="m_distribution_cze" {ifset  $menuActive}{if $menuActive=='distribution'}class="active"{/if}{/ifset}><a href="/{$lang}/distribuce">{_distribution}<span></span></a>
+            </li>
+            <li id="m_aboutus_cze" {ifset  $menuActive}{if $menuActive=='about'}class="active"{/if}{/ifset}><a href="/{$lang}/onas">{_about}<span></span></a>
+            </li>
+            <li id="m_gallery_cze" {ifset  $menuActive}{if $menuActive=='gallery'}class="active"{/if}{/ifset}><a href="/{$lang}/galerie/foto/{ifset $actualYear}{$actualYear}{/ifset}">{_galery}<span></span></a>
+            </li>
+            <li id="m_team_cze" {ifset  $menuActive}{if $menuActive=='team'}class="active"{/if}{/ifset}><a href="/{$lang}/tym">{_team}<span></span></a>
+            </li>
+            <li id="m_contact_cze" {ifset  $menuActive}{if $menuActive=='contact'}class="active"{/if}{/ifset}><a href="/{$lang}/kontakt">{_contact}<span></span></a>
+            </li>
+        </ul>
+        {else}
+        <ul id="menu_eng">
+            <li id="m_news_eng" {ifset  $menuActive}{if $menuActive=='homepage'}class="active"{/if}{/ifset}><a href="/{$lang}">{_news}<span></span></a>
+            </li>
+            <li id="m_eshop_eng" {ifset  $menuActive}{if $menuActive=='shop'}class="active"{/if}{/ifset}><a href="/{$lang}/shop">{_eshop}<span></span></a>
+            </li>
+            <li id="m_distribution_eng" {ifset  $menuActive}{if $menuActive=='distribution'}class="active"{/if}{/ifset}><a href="/{$lang}/distribuce">{_distribution}<span></span></a>
+            </li>
+            <li id="m_aboutus_eng" {ifset  $menuActive}{if $menuActive=='about'}class="active"{/if}{/ifset}><a href="/{$lang}/onas">{_about}<span></span></a>
+            </li>
+            <li id="m_gallery_eng" {ifset  $menuActive}{if $menuActive=='gallery'}class="active"{/if}{/ifset}><a href="/{$lang}/galerie/foto/{$actualYear}">{_galery}<span></span></a>
+            </li>
+            <li id="m_team_eng" {ifset  $menuActive}{if $menuActive=='team'}class="active"{/if}{/ifset}><a href="/{$lang}/tym">{_team}<span></span></a>
+            </li>
+            <li id="m_contact_eng" {ifset  $menuActive}{if $menuActive=='contact'}class="active"{/if}{/ifset}><a href="/{$lang}/kontakt">{_contact}t<span></span></a>
+            </li>
+        </ul>
+        {/if}
+	</div>
+    {include content}
+	<div id="content_right">
+        {if !empty($mpPoster)}
+    	<div class="content_right_box">
+            <a href="/images/posters/{$mpPoster->IMAGE}" class="image_gallery">
+		<img src="/images/posters/{$mpPoster->IMAGE_PREVIEW}" width="310" height="174" />
+            </a>
+        </div>
+       {else}
+       {ifset $randProduct}
+        <a href="/{$lang}/shop/{$randProduct->URL_CATEGORY}/{$randProduct->URL_NAME}" class="random_product">
+            <div class="random_product" style="background-image:url('/images/product_images/preview/{if !empty($randProduct->PREVIEW_FILENAME)}{$randProduct->PREVIEW_FILENAME}{/if}')">
+        	<div class="random_product_info">
+            	<div class="random_product_name">{$randProduct->NAME}</div>
+                <div class="random_product_price">{if $lang=='cs'}{$randProduct->PRICE} ,-{else}€{$randProduct->PRICE_EU}/${$randProduct->PRICE_USD}{/if}</div>
+            </div>
+        </div></a>
+        {/ifset}
+        {/if}
+        {if !empty($mpVideo)}
+    	<div class="content_right_box">
+            <a  href="http://www.youtube.com/v/{$mpVideo->KEY}?fs=1&amp;autoplay=1" class="watermark video_gallery"></a>
+            <div class="mpVideoClip">
+            <a href="http://www.youtube.com/v/{$mpVideo->KEY}?fs=1&amp;autoplay=1" class="video_gallery">
+            <img width="310" src="http://img.youtube.com/vi/{$mpVideo->KEY}/0.jpg" />
+            </a>
+            </div>
+        </div>
+        {/if}
+        {if !empty($mpImage)}
+    	<div class="content_right_box">
+            <a href="/images/other_images/{$mpImage['image']}" class="image_gallery">
+		<img src="/images/other_images/{$mpImage['preview']}" width="310" height="174" />
+            </a>
+        </div>
+        {/if}
+	</div>
+
+
+	<div id="content_bottom">
+        {ifset $articles}
+            {foreach $articles as $articleDetail}
+		<div {if $iterator->first}id="article_left"{else}class="article_float_left"{/if}>
+		<h2><a href="/{$lang}/article/{$articleDetail->TITLE_URL}">{$articleDetail->TITLE}</a></h2>
+		<p class="article">{$articleDetail->SHORT_TEXT|noescape}</p>
+		</div>
+            {/foreach}
+        {/ifset}
+	</div>
+        <div id="page_number">{if $articlePage != 0}<a href="{$presenter->link('this', array('article_page'=>($articlePage-1)))}">{_}novější příspěvky{/_}</a> |{/if} <a href="{$presenter->link('this', array('article_page'=>($articlePage+1)))}">{_}starší příspěvky{/_}</a></div>
+</div>
+
+<div id="footer_edge">
+    <div id="footer_edge_960"></div>
+</div>
+<div id="footer">
+	<div id="footer_content">
+		<div id="footer_left">
+                    <h3>{_Menu}</h3>
+                    <ul>
+                        <li class="footer_links"><a href="/{$lang}" class="links_footer">{_news}</a></li>
+                        <li class="footer_links"><a href="/{$lang}/shop" class="links_footer">{_eshop}</a></li>
+                        <li class="footer_links"><a href="/{$lang}/distribuce" class="links_footer">{_partners}</a></li>
+                        <li class="footer_links"><a href="/{$lang}/onas" class="links_footer">{_about}</a></li>
+                        <li class="footer_links"><a href="/{$lang}/galerie/foto/{$actualYear}" class="links_footer">{_galery}</a></li>
+                        <li class="footer_links"><a href="/{$lang}/tym" class="links_footer">{_team}</a></li>
+                        <li class="footer_links"><a href="/{$lang}/kontakt" class="links_footer">{_contact}</a></li>
+                    </ul>
+                </div>
+
+		<div class="footer_float_left">
+                    <h3>{_eshop}</h3>
+                    <ul>
+                        <li class="footer_links"><a href="/{$lang}/shop/shipping" class="links_footer">{_delivery_post}</a></li>
+                        {ifset $categories}
+                        {foreach $categories as $category}
+                        <li class="footer_links"><a href="/{$lang}/shop/{$category['CATEGORY']->URL_NAME}" class="links_footer">{$category['CATEGORY']->NAME}</a></li>
+                        {/foreach}
+                        {/ifset}
+                    </ul>
+                </div>
+
+		<div class="footer_float_left">
+		<h3>{_support_us}</h3>
+		<ul>
+            <li class="footer_links"><a target="_blank" href="http://www.youtube.com/user/Fingafbs" class="links_footer">Youtube</a></li>
+            <li class="footer_links"><a target="_blank" href="https://www.facebook.com/pages/Finga-fingerboards/175127117585" class="links_footer">Facebook</a></li>
+                        <li class="footer_links"><a href="/{$lang}/logo" class="links_footer">{_Logo}</a></li>
+                </ul>
+		</div>
+
+        <div class="footer_float_left">
+            <h3>{_links}</h3>
+            <ul>
+                {ifset $links}
+                {foreach $links as $link}
+        	<li class="footer_links"><a href="{$link->LINK}" target="_blank" class="links_footer">{$link->NAME}</a></li>
+                {/foreach}
+                {/ifset}
+            </ul>
+		</div>
+
+            <div class="footer_float_contact">
+                <h3>{_contact}</h3>
+                <ul>
+                    {if !empty($contact->CONTACT_NAME)}<li class="footer_contact">{$contact->CONTACT_NAME}</li>{/if}
+                    {if !empty($contact->CONTACT_FIRM)}<li class="footer_contact">{$contact->CONTACT_FIRM}</li>{/if}
+                    {if !empty($contact->CONTACT_STREET)}<li class="footer_contact">{$contact->CONTACT_STREET}</li>{/if}
+                    {if !empty($contact->CONTACT_ZIP) && !empty($contact->CONTACT_CITY)}<li class="footer_contact">{$contact->CONTACT_ZIP} {$contact->CONTACT_CITY}</li>{/if}
+                    {if !empty($contact->CONTACT_STATE)}<li class="footer_contact">{$contact->CONTACT_STATE}</li>{/if}
+                    {if !empty($contact->CONTACT_ICQ)}<li class="footer_contact">ICQ {$contact->CONTACT_ICQ}</li>{/if}
+                    {if !empty($contact->CONTACT_ICO)}<li class="footer_contact">ICO {$contact->CONTACT_ICO}</li>{/if}
+                    {if !empty($contact->CONTACT_MAIL)}<li class="footer_contact"><a href="mailto:{$contact->CONTACT_MAIL}" class="links_footer">{$contact->CONTACT_MAIL}</a></li>{/if}
+                </ul>
+            </div>
+
+		<div id="footer_divider">
+    	</div>
+    	<div id="asterarts_logo">
+    	</div>
+        <div id="copyright">
+        <p class="copyright">{_}Vytvořeno grafickým studiem asterArts v roce 2011{/_}<br />
+        </p>
+        </div>
+        <div id="footer_bottom">
+    	</div>
+    </div>
+</div>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33550009-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</body>
+</html>

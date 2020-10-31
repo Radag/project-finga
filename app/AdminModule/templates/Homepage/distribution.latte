@@ -1,0 +1,57 @@
+{block content}
+<div id="contentWrapper">
+{form distributionForm}
+    <ul class="errors" n:if="$form->hasErrors()">
+        <li n:foreach="$form->errors as $error">{$error}</li>
+    </ul>
+    
+<div id="tabs">
+    <ul>
+        <li><a href="#tab-cz">Distribuce</a></li>
+    </ul>
+    <div id="#tab-cz">
+        <table>
+            <tr><td>{label name /}</td></tr>
+            <tr><td>{input name}</td></tr>
+            <tr><td>{label link /}</td></tr>
+            <tr><td>{input link}</td></tr>
+            <tr><td>{label text /}</td></tr>
+            <tr><td>{input text}</td></tr>
+            <tr><td>{label image /}</td></tr>
+            <tr><td>{input image}</td></tr>
+            <tr><td>{label lang /}</td></tr>
+            <tr><td>{input lang}</td></tr>
+        </table>
+    </div>
+</div>
+<div id="formBottomPart" class="ui-widget-content ui-corner-all">{input send}<br class="clear"/></div>
+{/form}
+<h2>Seznam distribucí</h2>
+    <form id="filterForm" action="" method="get">
+    Filtrovat:
+    <div id="filter">
+	<input type="checkbox" name="active" id="filterActive" value="1" {if $filter['active']==1}checked="checked"{/if}/><label for="filterActive">aktivní</label>
+	<input type="checkbox" name="deleted" id="filterDeleted" value="1" {if $filter['deleted']==1}checked="checked"{/if}/><label for="filterDeleted">zobraz smazané</label>
+    </div>
+    </form>
+    <div id="itemsList">
+        {foreach $distributions as $distribution}
+        <h3>{$distribution->NAME} ({$distribution->LINK})</h3>
+        <div>
+            <img src="/images/distribution/{$distribution->FILENAME}" />
+            {$distribution->TEXT|noescape}
+            <div class="itemFooter">
+                {if $distribution->LANG == 0} Česky {else} Anglicky {/if}
+                <span class="buttonWrapper">
+                    <a class="button" href="/admin/homepage/edit-distribution/{$distribution->ID_DISTRIBUTION}">změnit</a>
+                    {if $distribution->STATUS == 1}
+                    <a class="button" href="{link deleteDistribution! $distribution->ID_DISTRIBUTION}">smazat</a>
+                    {elseif $distribution->STATUS == 2}
+                    <a class="button" href="{link restoreDistribution! $distribution->ID_DISTRIBUTION}">obnovit</a>
+                    {/if}
+                </span>
+            </div>
+        </div>    
+        {/foreach}
+    </div>  
+</div>

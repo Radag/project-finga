@@ -1,0 +1,59 @@
+{block content}
+<div id="content_left_text">
+    <h1>{_messages.shop.order} - {$order->ID_ORDER}</h1>
+<table class="orders">
+    <tr class="cart_item_header">
+        <th class="cart_header_2">
+            {_messages.shop.items}
+        </th>
+        <th class="cart_header_3">
+            {_messages.shop.number}
+        </th>
+        <th class="cart_header_4">
+            {_messages.shop.price}
+        </th>
+        <th></th>
+    </tr>
+
+    <tr><td class="cart_header_divider" colspan="4"></td> </tr>
+    {foreach $products as $product}
+    <tr class="cart_item_odd">
+        <td class="fst_column"><a href="/{$lang}/shop/{$product->URL_CATEGORY}/{$product->URL_NAME}">{$product->URL_NAME}</a></td>
+        <td>{$product->COUNT}</td>
+        {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}
+        <td>{$product->PRICE} Kč</td>
+        {elseif $order->PAYMENT_TYPE == 3}
+        <td>€{$product->PRICE_EU}</td>
+        {elseif $order->PAYMENT_TYPE == 4}
+        <td>${$product->PRICE_USD}</td>
+        {/if}
+    </tr>
+    {/foreach}
+</table>
+
+<div class="order_title" style="margin-top:27px;">{_messages.shop.payment_methods}</div>
+{if $order->PAYMENT_TYPE == 1}
+<p class="text">{_ptypes.transfer}</p>
+{elseif $order->PAYMENT_TYPE == 2}
+<p class="text">{_ptypes.cod_cz}</p>
+{elseif $order->PAYMENT_TYPE == 5}
+<p class="text">{_ptypes.cod_sk}</p>
+{elseif $order->PAYMENT_TYPE == 3}
+<p class="text">{_ptypes.paypal_eu}</p>
+{elseif $order->PAYMENT_TYPE == 4}
+<p class="text">{_ptypes.paypal_usd}</p>
+{/if}
+
+<div class="order_title">{_messages.shop.address_customer}</div>
+<ul>
+    <li class="list">{$order->NAME} {$order->SURNAME}</li>
+    <li class="list">{$order->STREET}</li>
+    <li class="list">{$order->CITY} {$order->ZIP}</li>
+    <li class="list">{$order->STATE}</li>
+    <li class="list">{$order->EMAIL}</li>
+    <li class="list">{$order->PHONE}</li>
+</ul>
+<div class="order_title">{_messages.shop.notice}</div>
+<p class="text">{$order->NOTE}</p>
+<div id="order_overall">{_messages.shop.final_price} {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$order->FINAL_PRICE} Kč{elseif $order->PAYMENT_TYPE == 3}€{$order->FINAL_PRICE}{elseif $order->PAYMENT_TYPE == 4}${$order->FINAL_PRICE}{/if}</div>
+</div>

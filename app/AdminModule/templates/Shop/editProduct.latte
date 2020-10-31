@@ -1,0 +1,166 @@
+{block content}
+<script type="text/javascript">
+    $(document).ready(function(){
+//        $("#frmnewProductForm-variants").change(function(event){
+//            $("#formCheckboxContainer").text('');
+//            $.getJSON("/admin/shop/getValues?&parameter=" + $("#frmnewProductForm-variants").val(), function(data){
+//                  $.each(data, function(key, val) {
+//                    var text = '<label for="frm-paramValues-' + key + '"">' + val +'</label><input type="checkbox" id="frm-paramValues-' + key + '" name="paramValues[' + key + ']"/>'
+//                    $("#formCheckboxContainer").append(text);
+//                  });
+//            });
+//        });
+    
+        $( "#changeVariantDialog" ).dialog({
+                        autoOpen: false,
+			show: "blind",
+			hide: "explode",
+                        modal:true
+        });
+        
+        $("#editVariant").click(function(event){
+            event.preventDefault();
+            $("#changeVariantDialog").dialog('open');
+        });
+        $( "#addVariantDialog" ).dialog({
+                        autoOpen: false,
+			show: "blind",
+			hide: "explode",
+                        modal:true
+        });
+        
+        $("#addVariant").click(function(event){
+            event.preventDefault();
+            $("#addVariantDialog").dialog('open');
+        });
+        
+        $("#addToProducts").click(function(event){
+            event.preventDefault();
+            var variant_cz = $("#variant_cz_input").val();
+            var variant_en = $("#variant_en_input").val();
+            $("#frmeditProductForm-variants_cz").val($("#frmeditProductForm-variants_cz").val() + ';' + variant_cz);
+            $("#frmeditProductForm-variants_en").val($("#frmeditProductForm-variants_en").val() + ';' + variant_en);
+            $("#formCheckboxContainer").text($("#formCheckboxContainer").text() + variant_cz + ', ');
+            $("#addVariantDialog").dialog('close');
+        });
+    });
+</script>
+
+<div id="contentWrapper">
+<h2>Přidat nový produkt:</h2>
+{form editProductForm}
+<ul class="errors" n:if="$form->hasErrors()">
+        <li n:foreach="$form->errors as $error">{$error}</li>
+</ul>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tab-cz">Česká verze</a></li>
+        <li><a href="#tab-en">Anglická verze</a></li>
+    </ul>
+    <div id="tab-cz">
+        <table>
+            <tr>
+                <td>{label name_cz /}</td>
+            </tr>
+            <tr>
+                <td>{input name_cz}</td>
+            </tr>
+            <tr>
+                <td>{label short_text_cz /}</td>
+            </tr>
+            <tr>
+                <td>{input short_text_cz}</td>
+            </tr>
+            <tr>
+                <td>{label text_cz /}</td>
+            </tr>
+            <tr>
+                <td>{input text_cz}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="tab-en">   
+        <table>
+            <tr>
+                <td>{label name_en /}</td>
+            </tr>
+            <tr>
+                <td>{input name_en}</td>
+            </tr>
+            <tr>
+                <td>{label short_text_en /}</td>
+            </tr>
+            <tr>
+                <td>{input short_text_en}</td>
+            </tr>
+            <tr>
+                <td>{label text_en /}</td>
+            </tr>
+            <tr>
+                <td>{input text_en}</td>
+            </tr>
+        </table>
+    </div>
+    Seznam obrázků
+    <table>
+        <tr><td>{input productImage1}</td><td>{input productImage2}</td></tr>
+        <tr><td>{input productImage3}</td><td>{input productImage4}</td></tr>
+        <tr><td>{input productImage5}</td><td>{input productImage6}</td></tr>
+        <tr><td>{input productImage7}</td><td>{input productImage8}</td></tr>
+    </table>
+</div>
+<div id="formBottomPart" class="ui-widget-content ui-corner-all">
+    <table>
+        <tr>
+            <td>{label price /}</td>
+            <td>{input price }</td>
+        </tr>
+        <tr>
+            <td>{label price_eu /}</td>
+            <td>{input price_eu }</td>
+        </tr>
+        <tr>
+            <td>{label price_usd /}</td>
+            <td>{input price_usd }</td>
+        </tr>
+        <tr>
+            <td>{label category /}</td>
+            <td>{input category}</td>
+        </tr>
+        <tr>
+            <td>{label image /}</td>
+            <td>{input image}</td>
+        </tr>
+        <tr>
+            <td>Aktuální obrázek:</td>
+            <td><img width="175" height="130" src="/images/product_images/preview/{$image}" /></td>
+        </tr>
+        <tr>
+            <td>Varianty:</td>
+            <td>
+                <div id="formCheckboxContainer">
+                </div>
+                <a class="button" id="editVariant">Změnit varianty</a>
+                <a class="button" id="addVariant">Přidat variantu</a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align: right;">{input send}</td>
+        </tr>
+    </table>
+</div>
+{/form}
+    
+</div>
+<div id="changeVariantDialog" title="Změnit varianty">
+    {control editVariantForm}
+</div>
+<div id="addVariantDialog" title="Přidat variantu">
+    <form>
+        CZ:<input name="variant_cz" id="variant_cz_input" type="text"/><br/>
+        EN:<input name="variant_en" id="variant_en_input" type="text"/><br/>
+        <input type="submit" id="addToProducts" value="Přidej"/>
+    </form>
+</div>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<meta name="description" content="Nette Framework web application skeleton">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+	<title>Finga Fingerboard - administrace</title>
+	<link rel="stylesheet" href="{$basePath}/js/jquery-ui/jquery-ui.min.css?version={$jsVersion}" type="text/css" />
+	<link rel="stylesheet" href="{$basePath}/css/admin.css?version={$jsVersion}" type="text/css" />
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico?version={$jsVersion}" type="image/x-icon"/>
+
+	<script type="text/javascript" src="{$basePath}/js/jquery.min.js?version={$jsVersion}"></script>
+    <script type="text/javascript" src="{$basePath}/js/jquery-ui/jquery-ui.min.js?version={$jsVersion}"></script>
+    <script type="text/javascript" src="{$basePath}/js/admin.js?version={$jsVersion}"></script>
+    <script type="text/javascript" src="{$basePath}/js/tiny_mce/tiny_mce.js?version={$jsVersion}"></script>
+    <script type="text/javascript" src="{$basePath}/js/netteForms.js?version={$jsVersion}"></script>
+	{block head}{/block}
+</head>
+<body>
+    <div id="page">
+        <div id="header">
+            <h1><img src="{$basePath}/images/Astersys.png" alt="AsterSys pro Finga Fingerboards"/></h1>
+        </div>
+
+        <div id="content">
+        {include #content}
+        </div>
+
+        <div id="menu">
+            <div class="rm_title ui-corner-all">Hlavní strana</div>
+            <ul class="rm_list">
+            <li><a href="{$presenter->link('Homepage:newFrontImage')}">Obrázek na úvodní straně</a></li>
+            <li><a href="{$presenter->link('Homepage:newRightImage')}">Obrázek v pravým sloupci</a></li>
+            <li><a href="{$presenter->link('Homepage:posters')}">Plakát</a></li>
+            </ul>
+            <div class="rm_title ui-corner-all">Články</div>
+            <ul class="rm_list">
+            <li><a href="{$presenter->link('Article:newArticle')}">Nový článek</a></li>
+            <li><a href="{$presenter->link('Article:articleList')}">Seznam článků</a></li>
+            </ul>
+            <div class="rm_title ui-corner-all">E-shop</div>
+            <ul class="rm_list">
+            <li><a href="{$presenter->link('Shop:orderList')}">Seznam objednávek</a></li>
+            <li><a href="{$presenter->link('Shop:newProduct')}">Nový produkt</a></li>
+            <li><a href="{$presenter->link('Shop:productList')}">Seznam produktů</a></li>
+            <li><a href="{$presenter->link('Shop:categories')}">Kategorie</a></li>
+            <li><a href="{$presenter->link('Shop:options')}">Nastavení e-shopu</a></li>
+            <li><a href="{$presenter->link('Shop:terms')}">Změnit obchodní podmínky</a></li>
+            <li><a href="{$presenter->link('Shop:shipping')}">Změnit doprava</a></li>
+            </ul>
+            <div class="rm_title ui-corner-all">Uživatelé</div>
+            <ul class="rm_list">
+            <li><a href="{$presenter->link('Users:usersList')}">Seznam uživatelů</a></li>
+            </ul>
+            <div class="rm_title ui-corner-all">Galerie</div>
+            <ul class="rm_list">
+            <li><a href="{$presenter->link('Gallery:video')}">Videa</a></li>
+            </ul>
+            <div class="rm_title ui-corner-all">Ostatní</div>
+            <ul class="rm_list">
+            <li><a href="{$presenter->link('Homepage:about')}">Změnit o nás</a></li>
+            <li><a href="{$presenter->link('Homepage:team')}">Změnit tým</a></li>
+            <li><a href="{$presenter->link('Homepage:contact')}">Změnit kontakt</a></li>
+            <li><a href="{$presenter->link('Homepage:distribution')}">Změnit distribuce</a></li>
+            <li><a href="{$presenter->link('Homepage:links')}">Změnit odkazy</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

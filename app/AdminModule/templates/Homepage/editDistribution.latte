@@ -1,0 +1,32 @@
+{block content}
+<div id="contentWrapper">
+{form editDistributionForm}
+    <ul class="errors" n:if="$form->hasErrors()">
+        <li n:foreach="$form->errors as $error">{$error}</li>
+    </ul>
+    
+<div id="tabs">
+    <ul>
+        <li><a href="#tab-cz">Distribuce</a></li>
+    </ul>
+    <div id="#tab-cz">
+    <table>
+            <tr><td>{label name /}</td></tr>
+            <tr><td>{input name}</td></tr>
+            <tr><td>{label link /}</td></tr>
+            <tr><td>{input link}</td></tr>
+            <tr><td>{label text /}</td></tr>
+            <tr><td>{input text}</td></tr>
+            <tr><td>{label image /}</td></tr>
+            <tr><td>
+            Aktuální obrázek:<br/>
+            <img src="/images/distribution/{$values->FILENAME}" /><br/>
+            {input image}</td></tr>
+            <tr><td>{label lang /}</td></tr>
+            <tr><td>{input lang}</td></tr>
+    </table>
+    </div>
+</div>
+<div id="formBottomPart" class="ui-widget-content ui-corner-all">{input send}<br class="clear"/></div>
+{/form}
+</div>

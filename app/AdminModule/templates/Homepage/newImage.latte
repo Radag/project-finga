@@ -1,0 +1,22 @@
+{block content}
+<div id="contentWrapper">
+    <h2>Nový obrázek na úvodní stranu</h2>
+    
+    {form newFrontImageForm}
+    <ul class="errors" n:if="$form->hasErrors()">
+            <li n:foreach="$form->errors as $error">{$error}</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>{label image /}</td>
+            <td>{input image}</td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align: right;">{input send}</td>
+        </tr>
+    </table>
+    {/form}
+</div>

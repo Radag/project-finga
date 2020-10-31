@@ -1,0 +1,44 @@
+{block #content}
+<div id="contentWrapper">
+<h2>Nové objednávky :</h2>
+    <div id="itemsList">
+    {foreach $newOrders as $key=>$order}
+        <h3>{$order->NAME}&nbsp;{$order->SURNAME}&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;{$order->EMAIL}<span style="float: right;padding-right: 5px;">{if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$order->FINAL_PRICE} Kč{elseif $order->PAYMENT_TYPE == 3}€{$order->FINAL_PRICE}{elseif $order->PAYMENT_TYPE == 4}${$order->FINAL_PRICE}{/if}</span></h3>
+        <div>
+            <table>
+                <tr>
+                <td class="adressWrapper">
+                    {$order->NAME} {$order->SURNAME}<br/>
+                    {$order->STREET}<br/>
+                    {$order->CITY} {$order->ZIP}<br/>
+                    {$order->STATE}<br/>
+                    <br/>
+                    Telefon:{$order->PHONE}<br/>
+                    Email:{$order->EMAIL}<br/>
+                    Vloženo:{$order->EDIT_DATE|date:'%d.%m.%Y %H:%m'}
+                </td>
+                <td class="listProducts" colspan="2">
+                    <ul>
+                        {foreach $products[$order->ID_ORDER] as $product}
+                        <li><a href="/shop/{$product->URL_CATEGORY}/{$product->URL_NAME}">{$product->NAME}</a><br/>
+                            {$product->VARIANT_NAME} | {$product->COUNT}ks | {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$product->PRICE}Kč/Ks{elseif $order->PAYMENT_TYPE == 3}€{$product->PRICE_EU}{elseif $order->PAYMENT_TYPE == 4}${$product->PRICE_USD}{/if} | {_Celkem} :{if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$product->COUNT * $product->PRICE}Kč{elseif $order->PAYMENT_TYPE == 3}€{$product->COUNT * $product->PRICE_EU}{elseif $order->PAYMENT_TYPE == 4}${$product->COUNT * $product->PRICE_USD}{/if}</li>
+                        {/foreach}
+                    </ul>
+                    <div class="paymentType">Způsob platby: {if $order->PAYMENT_TYPE == 1}{_}Převod na účet (ČR){/_} ({$paymentCost->PAYMENT_TRA} Kč){elseif $order->PAYMENT_TYPE == 2}{_}Dobírka (ČR){/_} ({$paymentCost->PAYMENT_COD} Kč){elseif $order->PAYMENT_TYPE == 5}{_}Dobírka (SK){/_} ({$paymentCost->PAYMENT_COD_SK} Kč){elseif $order->PAYMENT_TYPE == 3}{_}Přes paypal v EU{/_} (€{$paymentCost->PAYMENT_PAYPAL_EU}){elseif $order->PAYMENT_TYPE == 4}{_}Přes paypal v USD{/_} (${$paymentCost->PAYMENT_PAYPAL_USD}){/if}</div>
+                    <div class="summary">Celková cena: {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$order->FINAL_PRICE} Kč{elseif $order->PAYMENT_TYPE == 3}€{$order->FINAL_PRICE}{elseif $order->PAYMENT_TYPE == 4}${$order->FINAL_PRICE}{/if}</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Poznámka:{$order->NOTE}</td>
+            </tr>
+            </table>
+            <div class="itemFooter" >
+                <span class="buttonWrapper">
+                    <a class="button" href="/admin/shop/order-list/{$order->ID_ORDER}?do=cancelOrder">Zrušit objednávku</a>
+                    <a class="button" href="/admin/shop/order-list/{$order->ID_ORDER}?do=orderDone">Označit objednávku za vyřízenou</a>
+                </span>
+            </div>
+        </div>
+    {/foreach}
+    </div>
+</div>

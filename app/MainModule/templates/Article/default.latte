@@ -1,0 +1,11 @@
+{block content}
+<div id="content_left_text">
+	<h1>{$article->TITLE}</h1>
+        <p class="text">{$article->SHORT_TEXT|noescape}</p>
+        {if !empty($article->FILENAME)}
+        <div class="article_img_box">
+        	<img src="/images/article_images/{$article->FILENAME}" class="article_img" width="450" />
+        </div>
+        {/if}
+        {$article->TEXT|noescape}
+</div>

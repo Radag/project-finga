@@ -1,1 +1,8 @@
 app/config/local.neon
+/vendor
+/www/images/article_images
+/www/images/distribution
+/www/images/other_images
+/www/images/posters
+/www/images/product_images
+/.idea

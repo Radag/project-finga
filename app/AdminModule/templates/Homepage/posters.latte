@@ -1,0 +1,83 @@
+{block content}
+<div id="contentWrapper">
+    <h2>Nový obrázek plakát</h2>   
+    <div id="tabs">
+        <ul>
+            <li><a href="#tab-cz">Česká verze</a></li>
+            <li><a href="#tab-en">Anglická verze</a></li>
+        </ul>
+        <div id="tab-cz">
+        {form newPosterCzForm}
+        <ul class="errors" n:if="$form->hasErrors()">
+                <li n:foreach="$form->errors as $error">{$error}</li>
+        </ul>
+
+        <table>
+            <tr>
+                <td>{label name /}</td>
+                <td>{input name}</td>
+            </tr>
+            <tr>
+                <td>{label image /}</td>
+                <td>{input image}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: right;">{input send}</td>
+            </tr>
+        </table>
+             <div class="itemsList">
+            {foreach $allPostersCz as $poster}
+            <h3>{$poster->NAME}</h3>
+            <div>
+                <img width="500" src="/images/posters/{$poster->FILENAME}" alt="{$poster->NAME}"/>
+                <div class="itemFooter">
+                    {$poster->DATE|date:'%d.%m.%Y'}
+                    <span class="buttonWrapper">               
+                        <a class="button" href="{link activeDeactivePosterCz! $poster->ID_POSTER}">{if $poster->ACTIVE == 0}aktivovat{else}zneaktivnit{/if}</a>
+                    </span>
+                </div>
+            </div>    
+            {/foreach}
+            </div>
+        {/form}
+        </div>
+        <div id="tab-en">
+        {form newPosterEnForm}
+        <ul class="errors" n:if="$form->hasErrors()">
+                <li n:foreach="$form->errors as $error">{$error}</li>
+        </ul>
+
+        <table>
+            <tr>
+                <td>{label name /}</td>
+                <td>{input name}</td>
+            </tr>
+            <tr>
+                <td>{label image /}</td>
+                <td>{input image}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: right;">{input send}</td>
+            </tr>
+        </table>
+        {/form}
+            <div class="itemsList">
+            {foreach $allPostersEn as $poster}
+            <h3>{$poster->NAME}</h3>
+            <div>
+                <img width="500" src="/images/posters/{$poster->FILENAME}" alt="{$poster->NAME}"/>
+                <div class="itemFooter">
+                    {$poster->DATE|date:'%d.%m.%Y'}
+                    <span class="buttonWrapper">               
+                        <a class="button" href="{link activeDeactivePosterEn! $poster->ID_POSTER}">{if $poster->ACTIVE == 0}aktivovat{else}zneaktivnit{/if}</a>
+                    </span>
+                </div>
+            </div>    
+            {/foreach}
+            </div>
+        </div>
+    </div>
+    
+</div>

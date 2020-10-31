@@ -1,0 +1,14 @@
+{block content}
+<div id="content_left_text">
+    <h1>{_manufacturer}</h1>
+    <ul>
+        {if !empty($contact->CONTACT_NAME)}<li class="list" style="font-weight:bolder;">{$contact->CONTACT_NAME}</li>{/if}
+        {if !empty($contact->CONTACT_FIRM)}<li class="list">{$contact->CONTACT_FIRM}</li>{/if}
+        {if !empty($contact->CONTACT_STREET)}<li class="list">{$contact->CONTACT_STREET}</li>{/if}
+        {if !empty($contact->CONTACT_ZIP) && !empty($contact->CONTACT_CITY)}<li class="list">{$contact->CONTACT_ZIP} {$contact->CONTACT_CITY}</li>{/if}
+        {if !empty($contact->CONTACT_STATE)}<li class="list">{$contact->CONTACT_STATE}</li>{/if}
+        {if !empty($contact->CONTACT_ICQ)}<li class="list">ICQ: {$contact->CONTACT_ICQ}</li>{/if}
+        {if !empty($contact->CONTACT_ICO)}<li class="list">IČO: {$contact->CONTACT_ICO}</li>{/if}
+        {if !empty($contact->CONTACT_MAIL)}<li class="list"><a href="mailto:{$contact->CONTACT_MAIL}" class="content_link">{$contact->CONTACT_MAIL}</a></li>{/if}
+    </ul>
+</div>

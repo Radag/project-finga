@@ -1,0 +1,11 @@
+{block #content}
+<div id="content_left">
+{if !empty($flashes)}
+    <div id="flasNewsBox">
+    {foreach $flashes as $flash}
+        <p class="{$flash->type}">{$flash->message}</p>
+    {/foreach}
+    </div>
+{/if}
+<img src="/images/other_images/{$frontPageImage}" width="629" height="538" />
+</div>

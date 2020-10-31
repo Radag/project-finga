@@ -1,0 +1,19 @@
+{block content}
+<div id="contentWrapper">
+<h2>Doprava</h2>
+{form shippingForm}
+<div id="tabs">
+    <ul>
+        <li><a href="#tab-cz">Česká verze</a></li>
+        <li><a href="#tab-en">Anglická verze</a></li>
+    </ul>
+    <div id="tab-cz">
+        {input text_cz}
+    </div>
+    <div id="tab-en">
+        {input text_en}
+    </div>
+</div>
+<div id="formBottomPart" class="ui-widget-content ui-corner-all">{input send}<br class="clear"/></div>
+{/form}
+</div>

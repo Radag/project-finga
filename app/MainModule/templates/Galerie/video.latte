@@ -1,0 +1,43 @@
+{block content}
+<script type="text/javascript" >
+$(document).ready(function () {   
+    $("#container").pwi({
+        username: '115723864988738267298'
+    });
+});
+</script>
+<div id="content_left_text" style="width:612px;">
+        <h1>{_galery}</h1>
+        <div class="gallery_menu_pos">
+            <ul class="gallery_menu">
+            	<li><a href="/galerie/foto/{$actualYear}" >{_fotogalery}</a></li>
+                <li>|</li>
+                <li><a class="gallery_menu_active">{_videogalery}</a></li>
+            </ul>
+        </div>
+
+        <div class="gallery_menu_pos">
+            <ul class="gallery_menu">
+                {for $c=$actualYear; $c>=2009; $c--}
+            	<li>
+                  {if $year== $c}
+                    <span class="gallery_menu_active">{$c}</span>
+                  {else}
+                    <a href="/galerie/video/{$c}">{$c}</a>
+                  {/if}
+                </li>
+                <li>|</li>
+                {/for}
+            </ul>
+        </div>
+    	<div>
+        {foreach $videos as $video}
+            <div class="gallery_preview">
+        	<div class="gallery_image">
+                    <img width="175px" src="http://img.youtube.com/vi/{$video->KEY}/0.jpg"/>
+                </div>
+                <p class="gallery_description"><a href="http://www.youtube.com/v/{$video->KEY}?fs=1&amp;autoplay=1" class="gallery_description video_gallery">{$video->NAME}</a></p>
+            </div> 
+        {/foreach}
+        </div>
+</div>

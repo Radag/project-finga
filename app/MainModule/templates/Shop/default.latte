@@ -1,0 +1,53 @@
+{block content}
+<div id="content_left_text">
+        {if !empty($flashes)}
+        <div id="confirm">{_messages.shop.added_to_basket} <a href=>{_messages.shop.ad_basket}</a></div>
+        {/if}
+        <h1>E-Shop</h1>
+        <div id="eshop_menu_pos">
+        {if !empty($categories)}
+            {foreach $categories as $category}
+            <div class="eshop_menu"><a href="/{$lang}/shop/{$category['CATEGORY']->URL_NAME}">{$category['CATEGORY']->NAME}</a>
+                {if !empty($category['SUBCATEGORIES'])}
+                    <div class="eshop_submenu" >
+                        <ul>
+                            {foreach $category['SUBCATEGORIES'] as $subcategory}
+                            <li><a href="/{$lang}/shop/{$subcategory->URL_NAME}">{$subcategory->NAME}</a></li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                 {/if}
+            </div>
+
+            {/foreach}
+        {/if}
+        </div>
+        {if !empty($newestProduct->URL_NAME)}
+        <h5>{_messages.shop.new_products}</h5>
+        <div class="eshop_item_prev">
+        	<div class="eshop_img_prev">
+                <a href="/{$lang}/shop/{$newestProduct->URL_CATEGORY}/{$newestProduct->URL_NAME}">
+                    <img width="175" height="130" src="/images/product_images/preview/{if !empty($newestProduct->PREVIEW_FILENAME)}{$newestProduct->PREVIEW_FILENAME}{/if}" />
+                </a>
+            </div>
+            <div class="eshop_item_desc">
+            	<h5><a href="/{$lang}/shop/{$newestProduct->URL_CATEGORY}/{$newestProduct->URL_NAME}">{$newestProduct->NAME}</a></h5>
+                <p class="text">{_Cena} - <span class="important">{if $lang=='cs'}{$newestProduct->PRICE} Kč{else}€{$newestProduct->PRICE_EU} | ${$newestProduct->PRICE_USD}{/if}</span></p>
+                <p class="text">{$newestProduct->SHORT_TEXT}</p>
+                <form action="{link addProduct! $newestProduct->ID_PRODUCT}" method="post">
+            	<input type="text" name="count" value="1" class="item_count"/>
+                {if !empty( $newestProduct['variants'])}
+                    <select name="variant" class="eshop_shopping_cart_select">
+                    {foreach $newestProduct['variants'] as $key=>$variant}
+                        <option value="{$key}" >{$variant}</option>
+                    {/foreach}
+                    </select>
+                {/if}
+                <div class="eshop_shopping_cart"><input type="submit" class="eshop_shopping_cart_button" value="{_messages.shop.to_basket}"/></div>
+                </form>
+            </div>
+        </div>
+        {/if}
+        
+        <p class="eshop_terms">*) {_}Obchodní podmínky naleznete{/_} <a href="/{$lang}/shop/terms-of-trade">{_zde}</a></p>
+</div>

@@ -1,0 +1,90 @@
+{block content}
+<div id="contentWrapper">
+<h2>Seznam objednávek</h2>
+<form id="filterForm" action="" method="get">
+    Email:
+    <input type="text" class="text" value="{$filter['user']}" name="user"/>
+    <div id="filter">
+	<input type="checkbox" name="active" id="filterActive" value="1" {if $filter['active']==1}checked="checked"{/if}/><label for="filterActive">aktivní</label>
+	<input type="checkbox" name="done" id="filterDone" value="1" {if $filter['done']==1}checked="checked"{/if}/><label for="filterDone">vyřízené</label>
+	<input type="checkbox" name="canceled" id="filterCanceled" value="1" {if $filter['canceled']==1}checked="checked"{/if}/><label for="filterCanceled">zrušené</label>
+    </div>
+</form>
+<div id="itemsList">
+{foreach $orders as $key=>$order}
+    <h3>{$order->NAME}&nbsp;{$order->SURNAME}&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;{$order->EMAIL}<span style="float: right;padding-right: 5px;">{if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$order->FINAL_PRICE} Kč{elseif $order->PAYMENT_TYPE == 3}€{$order->FINAL_PRICE}{elseif $order->PAYMENT_TYPE == 4}${$order->FINAL_PRICE}{/if}</span></h3>
+        <div>
+            <table>
+                <tr>
+                <td class="adressWrapper">
+                    {$order->NAME} {$order->SURNAME}<br/>
+                    {$order->STREET}<br/>
+                    {$order->CITY} {$order->ZIP}<br/>
+                    {$order->STATE}<br/>
+                    <br/>
+                    Telefon:{$order->PHONE}<br/>
+                    Email:{$order->EMAIL}<br/>
+                    Vloženo:{$order->EDIT_DATE|date:'%d.%m.%Y %H:%m'}
+                </td>
+                <td class="listProducts" colspan="2">
+                    <ul>
+                        {foreach $products[$order->ID_ORDER] as $product}
+                        <li><a href="/shop/{$product->URL_CATEGORY}/{$product->URL_NAME}">{$product->NAME}</a><br/>
+                            {$product->VARIANT_NAME} | {$product->COUNT}ks | {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$product->PRICE}Kč/Ks{elseif $order->PAYMENT_TYPE == 3}€{$product->PRICE_EU}{elseif $order->PAYMENT_TYPE == 4}${$product->PRICE_USD}{/if} | {_Celkem} :{if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$product->COUNT * $product->PRICE}Kč{elseif $order->PAYMENT_TYPE == 3}€{$product->COUNT * $product->PRICE_EU}{elseif $order->PAYMENT_TYPE == 4}${$product->COUNT * $product->PRICE_USD}{/if}</li>
+                        {/foreach}
+                    </ul>
+                    <div class="paymentType">Způsob platby: {if $order->PAYMENT_TYPE == 1}{_}Převod na účet (ČR){/_} ({$paymentCost->PAYMENT_TRA} Kč){elseif $order->PAYMENT_TYPE == 2}{_}Dobírka (ČR){/_} ({$paymentCost->PAYMENT_COD} Kč){elseif $order->PAYMENT_TYPE == 5}{_}Dobírka (SK){/_} ({$paymentCost->PAYMENT_COD_SK} Kč){elseif $order->PAYMENT_TYPE == 3}{_}Přes paypal v EU{/_} (€{$paymentCost->PAYMENT_PAYPAL_EU}){elseif $order->PAYMENT_TYPE == 4}{_}Přes paypal v USD{/_} (${$paymentCost->PAYMENT_PAYPAL_USD}){/if}</div>
+                    <div class="summary">Celková cena: {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$order->FINAL_PRICE} Kč{elseif $order->PAYMENT_TYPE == 3}€{$order->FINAL_PRICE}{elseif $order->PAYMENT_TYPE == 4}${$order->FINAL_PRICE}{/if}</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Poznámka:{$order->NOTE}</td>
+            </tr>
+            </table>
+        <div class="itemFooter" >
+            <span class="buttonWrapper">
+                <a class="button" href="{link cancelOrder! $order->ID_ORDER}">Zrušit objednávku</a>
+                <a class="button" href="{link orderDone! $order->ID_ORDER}">Označit objednávku za vyřízenou</a>
+            </span>
+        </div>
+    </div>
+{/foreach}
+</div>
+<div id="paginator">
+    {control visualPaginator}
+</div>
+
+
+{*foreach $orders as $key=>$order}
+<table id="orderListTable">
+    <tr class="headRow"><td class="adress" >{$order->NAME} {$order->SURNAME}</td><td  class="products">{$order->EMAIL}</td><td class="price">{$order->FINAL_PRICE} Kč</td></tr>
+    <tr>
+        <td class="adressWrapper">
+            {$order->NAME} {$order->SURNAME}<br/>
+            {$order->STREET}<br/>
+            {$order->CITY} {$order->ZIP}<br/>
+            <br/>
+            Telefon:{$order->PHONE}<br/>
+            Email:{$order->EMAIL}<br/>
+            Vloženo:{$order->EDIT_DATE|date:'%d.%m.%Y %H:%m'}
+        </td>
+        <td class="listProducts" colspan="2">
+            <ul>
+                {foreach $products[$order->ID_ORDER] as $product}
+                <li><a href="/shop/{$product->URL_CATEGORY}/{$product->URL_NAME}">{$product->NAME}</a><br/>
+                    {$product->COUNT}ks | {$product->PRICE}Kč/Ks | Celkem :{$product->COUNT * $product->PRICE}Kč</li>
+                {/foreach}
+            </ul>
+            <div class="summary">Celková cena: {$order->FINAL_PRICE} Kč</div>
+        </td>
+    </tr>
+    <tr class="note">
+        <td colspan="3">Poznámka:{$order->NOTE}</td>
+    </tr>
+    <tr class="buttonsRow">
+        <td><a href="{link cancelOrder! $order->ID_ORDER}">Zrušit objednávku</a></td><td colspan="2"><a href="{link orderDone! $order->ID_ORDER}">Označit objednávku za vyřízenou</a></td>
+    </tr>
+</table>
+<br/>
+{/foreach*}
+</div>

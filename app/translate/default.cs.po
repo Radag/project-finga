@@ -1,0 +1,65 @@
+# Gettext keys exported by GettextExtractor
+# Created: 2011-11-27T19:58:41+01:00
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Adam Navrátil <Radaqs@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# HomepagePresenter.php:22
+msgid "Heslo:"
+msgstr "Password"
+
+# ShopPresenter.php:43
+msgid "Jméno a příjmení:"
+msgstr "Name and surname:"
+
+# ShopPresenter.php:46
+msgid "Obec:"
+msgstr "City:"
+
+# ShopPresenter.php:56
+msgid "Objednat"
+msgstr "Order:"
+
+# SignPresenter.php:25
+msgid "Password:"
+msgstr "Password:"
+
+# ShopPresenter.php:51
+msgid "Psč:"
+msgstr "Zip:"
+
+# HomepagePresenter.php:25
+msgid "Registrovat"
+msgstr "Registrovat"
+
+# SignPresenter.php:28
+msgid "Remember me on this computer"
+msgstr "Remember me on this computer"
+
+# SignPresenter.php:30
+msgid "Sign in"
+msgstr "Sign in"
+
+# ShopPresenter.php:49
+msgid "Ulice, číslo domu:"
+msgstr "Street number:"
+
+# SignPresenter.php:22
+msgid "Username:"
+msgstr "Username:"
+
+# HomepagePresenter.php:19
+msgid "Uživatelské jméno:"
+msgstr "UserName:"
+
+msgid "Novinky"
+msgstr "Novinky"
+

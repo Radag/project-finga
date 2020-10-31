@@ -1,0 +1,232 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+body {
+    background-color: darkslategray;
+    font-family: verdana;
+}
+
+#page {
+    width:1024px;
+    margin:auto;
+    background-color:white;
+}
+
+#header {
+    height: 120px;
+}
+
+#header h1 {
+    margin-left: 20px;
+}
+
+
+#content {
+    background-color: white;
+    float: left;
+    width: 774px;
+    height: 1600px;
+    border: 0px;
+}
+
+#content input, textarea {
+
+}
+
+#content select {
+    border: 1px solid black;
+    background-color: white;
+}
+
+#content h2 {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#menu {
+    background-color: white;
+    float: right;
+    width: 250px;
+    height: 1600px;
+}
+.rm_title {
+    text-align: center;
+    background-color: #FF6D29;
+    border:1px solid #EB4A00;
+    height: 20px;
+    padding-top: 2px;
+    margin-right: 3px;
+}
+
+.rm_list {
+    list-style: none;
+    margin: 10px;
+} 
+
+.rfloat {
+    float: right;
+}
+
+.lfloat {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+#contentWrapper {
+    margin-left: 30px;
+}
+
+#contentWrapper h2 {
+    margin-left: 0px;
+}
+
+
+#contentWrapper input.text {
+    border: 1px solid black;
+    height: 22px;
+    width: 300px;
+}
+#contentWrapper textarea {
+    border: 1px solid black;
+}
+
+#contentWrapper textarea.editor {
+    height: 300px;
+    width: 640px;
+}
+
+#contentWrapper textarea.small {
+    height: 100px;
+    width: 640px;
+}
+
+#contentWrapper .button {
+    height: 24px;
+}
+
+#contentWrapper input.button {
+    padding-top: 0px;
+    padding-bottom: 3px;
+}
+
+#contentWrapper .button span{
+    padding-top: 0px;
+    padding-bottom: 3px;
+}
+
+#contentWrapper .buttonWrapper{
+    float: right;
+}
+
+#contentWrapper #tabs { 
+    width: 700px;
+}
+
+#contentWrapper #formBottomPart{
+    width: 696px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+
+
+/* seznam objednávek */
+
+#itemsList .listProducts li{
+    list-style: none;
+    background-color: #9AAFE5;
+    padding: 3px;
+}
+
+#itemsList .listProducts .summary{
+    list-style: none;
+    background-color: cadetblue;
+    height: 25px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+#itemsList .listProducts .paymentType{
+    list-style: none;
+    background-color: #3484d2;
+    height: 25px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+#itemsList table td {
+    padding: 3px;
+}
+
+#itemsList table {
+    width: 650px;
+}
+
+#itemsList .adressWrapper {
+    padding: 5px;
+}
+
+#itemsList .listProducts{
+    vertical-align: top;
+}
+
+/* seznamy */
+
+#contentWrapper #itemsList {
+    width: 730px;
+}
+
+#contentWrapper #itemsList h3 {
+    height: 25px;
+    padding-left: 30px;
+}
+    
+.listRow {
+    width: 600px;
+    margin: 5px;
+    padding: 5px;
+    height: 30px;
+}
+
+.fright {
+    float: right;
+}
+
+/* filter */
+#filter {
+    float: right;
+}
+
+#filter label{
+    height: 25px;
+}
+
+#filter label span{
+    padding-top: 0px;
+}
+
+#filterForm {
+    margin-bottom: 30px;
+    width: 720px;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination li {
+    display: inline-block;
+    height: 22px;
+}
+
+
+.pagination li.active {
+    background-color: #0d95e8;
+    color: white;
+}

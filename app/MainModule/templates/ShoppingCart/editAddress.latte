@@ -1,0 +1,81 @@
+{var $robots = noindex}
+{block content}
+<div id="content_left_text">
+<h1>{_edit_address}</h1>
+{form editAddressForm}
+    <div class="register_line">
+        <div class="register_left">
+            {label name /}
+        </div>
+
+        <div class="register_center">
+            {input name}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label surname /}
+        </div>
+
+        <div class="register_center">
+            {input surname}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label street /}
+        </div>
+
+        <div class="register_center">
+            {input street}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label city /}
+        </div>
+
+        <div class="register_center">
+            {input city}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label zip /}
+        </div>
+
+        <div class="register_center">
+            {input zip}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label state /}
+        </div>
+
+        <div class="register_center">
+            {input state}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label email /}
+        </div>
+
+        <div class="register_center">
+            {input email}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label phone /}
+        </div>
+
+        <div class="register_center">
+            {input phone}
+        </div>
+    </div>
+    <p class="text">*) {_mandatory_fields}</p>
+    <div class="button_reg">{input send}</div>
+{/form}
+</div>

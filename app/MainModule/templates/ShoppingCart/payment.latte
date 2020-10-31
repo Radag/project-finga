@@ -1,0 +1,43 @@
+{block content}
+<div id="content_left_text">
+    <h1>{_messages.shop.order}</h1>
+    <div class="order_phase_inactive">
+        {_messages.shop.basket}
+    </div>
+    <div class="order_phase_inactive">
+        {_messages.shop.paymet_delivery}
+    </div>
+    <div class="order_phase_active">
+        {_messages.shop.finish_order}
+    </div>
+    {form paymentForm}
+        <div class="order_title">{label payment_type/}</div>
+        
+        <p class="list">
+        {input payment_type}
+        <br/>
+        {if $lang=='cs'}
+        {_}Cena poštovného při placení převodem je{/_} {$paymentCost->PAYMENT_TRA} Kč {_}a při placení dobírkou{/_} {$paymentCost->PAYMENT_COD} Kč.
+        Dobírka do SR stojí {$paymentCost->PAYMENT_COD_SK} Kč.
+        {else}
+        {_}Cena poštovného do ČR při placení přes paypal je{/_} {$paymentCost->PAYMENT_PAYPAL_EU} Euro {_a} {$paymentCost->PAYMENT_PAYPAL_USD} USD {_}při platbě v USD{/_}.
+        {/if}
+        </p>
+        <div class="order_title">{_messages.shop.address_customer} (<a href="/{$lang}/shopping-cart/edit-address">{_edit}</a>)</div>
+        <ul>
+            <li class="list">{$order->NAME} {$order->SURNAME}</li>
+            <li class="list">{$order->STREET}</li>
+            <li class="list">{$order->CITY} {$order->ZIP}</li>
+            <li class="list">{$order->STATE}</li>
+            <li class="list">{$order->EMAIL}</li>
+            <li class="list">{$order->PHONE}</li>
+        </ul>
+        <div class="order_title">{label note/}</div>
+        {input note}
+        <div id="order_move">
+            <div id="button_back"><div class="button_normal"><a href="/{$lang}/shopping-cart">« {_back}</a></div></div>
+            <div id="button_next">{input send}</div>
+        </div>
+        {input id_order}
+    {/form}
+</div>

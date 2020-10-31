@@ -1,0 +1,183 @@
+{var $robots = noindex}
+{block content}
+<div id="content_left_text">
+<h1>{_registration}</h1>
+{form registrationForm}
+<ul style="color:red; margin-left:30px;" class="errors" n:if="$form->hasErrors()">
+        <li n:foreach="$form->errors as $error">{$error}</li>
+</ul>
+    <div class="registration_title">
+        {_login_data}
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label email /}
+        </div>
+
+        <div class="register_center">
+            {input email}
+        </div>
+        <div class="register_right">
+            {_username}
+        </div>
+
+    </div>
+
+    <div class="register_line">
+        <div class="register_left">
+            {label password1 /}
+        </div>
+
+        <div class="register_center">
+            {input password1}
+        </div>
+        <div class="register_right">
+            {_min5char}
+        </div>
+
+    </div>
+
+    <div class="register_line">
+        <div class="register_left">
+            {label password2 /}
+        </div>
+
+        <div class="register_center">
+            {input password2}
+        </div>
+    </div>
+
+    <div class="registration_title">
+        {_fact_detail}
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label name /}
+        </div>
+
+        <div class="register_center">
+            {input name}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label surname /}
+        </div>
+
+        <div class="register_center">
+            {input surname}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label street /}
+        </div>
+
+        <div class="register_center">
+           {input street}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label city /}
+        </div>
+
+        <div class="register_center">
+            {input city}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label zip /}
+        </div>
+
+        <div class="register_center">
+            {input zip}
+        </div>
+    </div>
+
+    <div class="register_line">
+        <div class="register_left">
+            {label phone /}
+        </div>
+
+        <div class="register_center">
+            {input phone}
+        </div>
+    </div>
+
+    <div class="register_line">
+        <div class="register_left">
+            {label state /}
+        </div>
+
+        <div class="register_center">
+            {input state}
+        </div>
+    </div>
+
+    <div class="registration_title">
+            {input delivery} {_delivery_if_same}
+    </div>
+    <div id="delivery_adress" style="display: none">
+    <div class="register_line">
+        <div class="register_left">
+            {label d_name /}
+        </div>
+
+        <div class="register_center">
+            {input d_name}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label d_surname /}
+        </div>
+
+        <div class="register_center">
+            {input d_surname}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label d_street /}
+        </div>
+
+        <div class="register_center">
+            {input d_street}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label d_city /}
+        </div>
+
+        <div class="register_center">
+            {input d_city}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label d_zip /}
+        </div>
+
+        <div class="register_center">
+            {input d_zip}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label d_state /}
+        </div>
+
+        <div class="register_center">
+            {input d_state}
+        </div>
+    </div>
+    </div>
+
+    <p class="text"><br />{input agree} {_}Registrací souhlasím s{/_} <a href="/{$lang}/shop/terms-of-trade">{_}obchodními podmínkami{/_}</a> Finga Fingerboards</p>
+    <p class="text">*) {_mandatory_fields}</p>
+    <div class="button_reg">{input send}</div>
+{/form}
+</div>

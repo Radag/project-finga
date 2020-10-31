@@ -1,0 +1,59 @@
+{block content}
+<div id="content_left_text">
+        <h1>{_messages.shop.order}</h1>
+        <div class="order_phase_active">
+        {_messages.shop.basket}
+        </div>
+        <div class="order_phase_inactive">
+        	{_messages.shop.paymet_delivery}
+        </div>
+        <div class="order_phase_inactive">
+        	{_messages.shop.finish_order}
+        </div>
+        {form orderForm}
+        <table class="order_list">
+        	<tr class="cart_item_header">
+            	<th class="cart_header_1">
+                	{_messages.shop.action}
+                </th>
+                <th class="cart_header_2">
+                	{_messages.shop.items}
+                </th>
+                <th class="cart_header_3">
+                	{_messages.shop.number}
+                </th>
+                <th class="cart_header_4">
+                	{_messages.shop.variant}
+                </th>
+                <th class="cart_header_5">
+                	{_messages.shop.price}
+                </th>
+                <th></th>
+            </tr>
+            
+            <tr><td class="cart_header_divider" colspan="5"></td> </tr>
+            {foreach $products as $key=>$product}
+            {if !empty($product['product'])}
+            <tr class="cart_item_odd">
+            	<td class="cart_item_1"><a href="{link removeProduct! $product['product']->ID_PRODUCT}">[ x ]</a></td>
+                <td><a href="/{$lang}/shop/{$product['product']->URL_CATEGORY}/{$product['product']->URL_NAME}">{$product['product']->NAME}</a></td>
+                <td>{$form['products'][$key]['count']->control}</td>
+                <td>
+                {ifset $form['products'][$key]['id_variant']}
+                    {$form['products'][$key]['id_variant']->control}
+                {/ifset}
+                </td>
+                {if $lang=='cs'}
+                    <td>{$product['product']->PRICE * $form['products'][$key]['count']->value} Kč</td>
+                {else}
+                    <td>€{$product['product']->PRICE_EU * $form['products'][$key]['count']->value} | ${$product['product']->PRICE_USD * $form['products'][$key]['count']->value}</td>
+                {/if}
+            </tr>
+            {/if}
+            {/foreach}     
+        </table>
+        <div id="order_move">
+        	<div id="button_next">{input send}</div>
+        </div>
+        {/form}
+</div>

@@ -1,0 +1,25 @@
+{block content}
+<div id="contentWrapper">
+{form teamForm}
+<div id="tabs">
+    <ul>
+        <li><a href="#tab-cz">Česká verze</a></li>
+        <li><a href="#tab-en">Anglická verze</a></li>
+    </ul>
+    <div id="tab-cz">{input tym}</div>
+    <div id="tab-en">{input team}</div>
+</div>
+<div id="formBottomPart" class="ui-widget-content ui-corner-all">{input send}<br class="clear"/></div>
+
+{/form}
+    
+<h2>Členové týmu</h2>
+{form teamMemberForm}
+    {label member /}
+    {input member}
+    {input send}
+{/form}
+{foreach $members as $member}
+    <div class="listRow ui-widget-header ui-corner-all">{$member->NAME}<a class="button fright" href="{link deleteMember! $member->ID}">smazat</a></div>
+{/foreach}
+</div>

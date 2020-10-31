@@ -1,0 +1,40 @@
+{block content}
+<h2>Odkazy</h2>
+<div id="contentWrapper">
+    {form newLinkForm}
+    <ul class="errors" n:if="$form->hasErrors()">
+            <li n:foreach="$form->errors as $error">{$error}</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>{label name_cz /}</td>
+            <td>{input name_cz}</td>
+
+        </tr>
+        <tr>
+            <td>{label name_en /}</td>
+            <td>{input name_en}</td>
+
+        </tr>
+        <tr>
+            <td>{label link /}</td>
+            <td>{input link}</td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align: right;">{input send}</td>
+        </tr>
+    </table>
+    {/form}
+    <br/>
+    {foreach $links as $link}
+    <div class="listRow ui-widget-header ui-corner-all">{$link->NAME_CZ} | {$link->NAME_EN}
+    {if $link->STATUS == 0}
+    <a class="button fright" href="{link deleteLink! $link->ID_LINK}">smazat</a></div>
+    {else}
+    <a class="button fright" href="{link renewLink! $link->ID_LINK}">obnovit</a></div>
+    {/if}
+    {/foreach}
+</div>

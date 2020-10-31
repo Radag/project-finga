@@ -1,0 +1,460 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Layout */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+body {
+    background-color: #000000;
+    font-family: Verdana;
+    font-size: 11px;
+    background-image: url("../images/background.png");
+    background-repeat: repeat-x;
+	background-position: 50% 0%;
+	height:430px;
+}
+
+#page {
+	margin:auto;
+	width:960px;
+}
+
+#header {
+	position:relative;
+    background: url("../images/header.png");
+    width:960px;
+    height: 430px;
+	margin:auto;
+}
+
+#manager {
+	position:relative;
+	width:457px;
+	margin-left:477px;
+	padding-top:18px;
+	padding-left:25px;
+}
+
+
+#login {
+	position:relative;
+	float:left;
+	width:200px;
+}
+
+#language_selection {
+	position:relative;
+	float:left;
+	margin-left:80px;
+}
+
+#cze {
+	position:relative;
+	padding-left:27px;
+	color:#c2c2c2;
+	
+}
+
+#cze span {
+	display:block;
+	width:18px;
+	height:12px;
+	position:absolute;
+	background:url(../images/flags.png) -19px 0px;
+	top:0px;
+}
+
+
+#cze:hover span, #cze.active span {
+	background:url(../images/flags.png) 0px 0px;
+	cursor:pointer;
+}
+
+#cze:hover, #cze.active {
+	color:#e6c32c;
+	cursor:pointer;
+	
+}
+
+#eng {
+	position:relative;
+	left:30px;
+	padding-left:27px;
+	color:#c2c2c2;
+}
+
+#eng span {
+	display:block;
+	width:18px;
+	height:12px;
+	position:absolute;
+	background:url(../images/flags.png) -57px 0px;
+	top:0px;
+}
+
+
+#eng:hover span, #eng.active span {
+	background:url(../images/flags.png) -38px 0px;
+	cursor:pointer;
+}
+
+#eng:hover, #cze.active {
+	color:#e6c32c;
+	cursor:pointer;
+}
+
+
+/* menu cze  */
+
+#menu {
+	position:relative;
+	width:629px;
+	height:23px;
+	margin-top:111px;
+	margin-left:327px;
+	padding:0px;
+}
+
+#menu li {
+	float:left;
+	list-style:none;
+}
+
+#menu li a {
+	display:block;
+	z-index:1;
+	margin-left:0px;
+	margin-top:0px;
+    position: relative;
+	
+}
+
+#menu li a span{
+	top:0px;
+	left:0px;
+	z-index:10;
+	position:absolute;
+	display:block;
+}
+
+#m_news_cze a{
+    width:90px;
+	height:23px;
+}
+
+#m_news_cze a span {
+	width:90px;
+	height:23px;
+	list-style:none;
+	background: url("../images/cze/menu.png") 0px 0px;
+}
+
+#m_news_cze:hover a span, #m_news_cze.active a span {
+	background: url("../images/cze/menu.png") 0px -23px;
+}
+
+
+#m_eshop_cze a{
+   	width:85px;
+	height:23px;
+}
+
+#m_eshop_cze a span {
+    	width:85px;
+	height:23px;
+	background: url("../images/cze/menu.png") -90px 0px;
+}
+
+#m_eshop_cze:hover a span, #m_news_cze.active a span {
+	background: url("../images/cze/menu.png") -90px -23px;
+}
+
+#m_distribution_cze a{
+   	width:120px;
+	height:23px;
+}
+
+#m_distribution_cze a span {
+    	width:120px;
+	height:23px;
+	background: url("../images/cze/menu.png") -175px 0px;
+}
+
+#m_distribution_cze:hover a span, #m_distribution_cze.active a span {
+	background: url("../images/cze/menu.png") -175px -23px;
+}
+
+#m_aboutus_cze a{
+    	width:78px;
+	height:23px;
+}
+
+#m_aboutus_cze a span {
+    	width:78px;
+	height:23px;
+	background: url("../images/cze/menu.png") -295px 0px;
+}
+
+#m_aboutus_cze:hover a span, #m_aboutus_cze.active a span {
+	background: url("../images/cze/menu.png") -295px -23px;
+}
+
+#m_gallery_cze a{
+   	width:95px;
+	height:23px;
+}
+
+#m_gallery_cze a span {
+    	width:95px;
+	height:23px;
+	background: url("../images/cze/menu.png") -373px 0px;
+}
+
+#m_gallery_cze:hover a span, #m_gallery_cze.active a span {
+	background: url("../images/cze/menu.png") -373px -23px;
+}
+
+#m_team_cze a{
+   	width:62px;
+	height:23px;
+}
+
+#m_team_cze a span {
+    	width:62px;
+	height:23px;
+	background: url("../images/cze/menu.png") -468px 0px;
+}
+
+#m_team_cze:hover a span, #m_team_cze.active a span {
+	background: url("../images/cze/menu.png") -468px -23px;
+}
+
+#m_contact_cze a{
+   	width:90px;
+	height:23px;
+}
+
+#m_contact_cze a span {
+    	width:90px;
+	height:23px;
+	background: url("../images/cze/menu.png") -530px 0px;
+}
+
+#m_contact_cze:hover a span, #m_contact_cze.active a span {
+	background: url("../images/cze/menu.png") -530px -23px;
+}
+
+#content_left {
+	position:relative;
+	float:left;
+    	width:628px;
+	left:7px;
+	top:-244px;
+        color:white;
+}
+
+#content_right {
+	position:relative;
+	float:right;
+        width:310px;
+        right:7px;
+	top:-244px;
+}
+
+.content_right_box {
+	position:relative;
+	margin-bottom:8px;
+}
+
+#content_bottom {
+	position:relative;
+	padding-top:50px;
+	clear:both;
+	width:auto;
+}
+
+#article_left {
+	position:relative;
+	float:left;
+    width:310px;
+	margin-left:7px;
+	margin-bottom:60px;
+}
+
+.article_float_left {
+	position:relative;
+	float:left;
+    width:310px;
+	margin-left:8px;
+}
+
+#footer_edge {
+	position:relative;
+	margin-top:60px;
+    clear:both;
+	height:5px;
+	width:auto;
+    background: url("../images/footer_edge.png");
+	background-repeat:repeat-x;
+}
+
+#footer {
+	position:relative;
+	padding-top:30px;
+    clear:both;
+	height:auto;
+	width:auto;
+	background:#b8b8b8;
+}
+
+#footer_content {
+	margin:auto;
+	width:960px;
+}
+
+#footer_left {
+	position:relative;
+	float:left;
+    width:155px;
+	margin-left:7px;
+	padding-bottom:30px;
+}
+
+.footer_float_left {
+	position:relative;
+	float:left;
+    width:155px;
+	margin-left:4px;
+	padding-bottom:30px;
+}
+
+.footer_float_contact {
+	position:relative;
+	float:left;
+    width:310px;
+	margin-left:4px;
+	padding-bottom:30px;
+}
+
+#footer_divider {
+	position:relative;
+	clear: both;
+	margin:auto;
+	height:1px;
+	width:960px;
+	background-color:#808080;
+}
+
+#asterarts_logo {
+	position:relative;
+	float:left;
+	width:60px;
+	height:60px;
+	background-image:url(../images/asterarts_logo.png);
+	margin-left:20px;
+	margin-top:20px;
+}
+
+#copyright {
+	position:relative;
+	float:left;
+	margin-top:32px;
+}
+
+#footer_bottom {
+	position:relative;
+	clear: both;
+	margin:auto;
+	height:30px;
+	width:960px;
+}
+
+/* Obsah */
+
+p {
+    line-height: 1.5em;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.manager {
+    color: #c2c2c2;
+	cursor:pointer;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:11px;
+    font-weight: normal;
+	text-decoration:none;
+}
+
+.manager:hover {
+	color: #e6c32c;
+}
+
+.links_footer {
+    color: #353535;
+	cursor:pointer;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:11px;
+    list-style:disc;
+	margin-top:5px;
+    font-weight: bolder;
+	text-decoration:underline;
+}
+
+h2 {
+    color:#e6c32c;
+	font-weight:bolder;
+	font-size:15px;
+    font-family: "Trebuchet MS";
+	padding-bottom:10px;
+}
+
+h3 {
+    color:#000000;
+	font-weight:bolder;
+	font-size:13px;
+    font-family: "Trebuchet MS";
+	padding-bottom:7px;
+}
+
+.account_manager {
+	font-size:11px;
+	color:#c2c2c2;
+}
+
+.article {
+	padding-right:10px;
+	color:#e3e3e3;
+	font-size:12px;
+	font-weight:lighter;
+}
+
+.footer_links {
+	color: #353535;
+    list-style:disc;
+	margin-top:5px;
+	margin-left:17px;
+}
+
+.footer_contact {
+	color: #000000;
+	margin-top:5px;
+	list-style:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight:bolder;
+}
+
+.copyright {
+	padding-left:20px;
+	color:#000000;
+	font-size:11px;
+}
+
+.copyright_link {
+	font-weight:bolder;
+	color:inherit;
+}

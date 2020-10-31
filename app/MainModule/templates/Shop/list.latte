@@ -1,0 +1,37 @@
+{block content}
+<div id="content_left_text">
+        <h1>{_eshop}</h1>
+        <div class="eshop_levels">
+        <a href="/{$lang}/shop">{_eshop}</a> » {if $mainCategory}<a href="/{$lang}/shop/{$mainCategory->URL_NAME}">{$mainCategory->NAME}</a> » {/if}{$category_name}
+        </div>
+        {if !empty($subcategories)}
+            {foreach $subcategories as $subcategory}
+            <div class="eshop_menu"><a href="/{$lang}/shop/{$subcategory->URL_NAME}">{$subcategory->NAME}</a></div>
+            {/foreach}
+        {/if}
+        {foreach $products as $product}
+        <div class="eshop_item_prev">
+        	<div class="eshop_img_prev">
+                <a href="/{$lang}/shop/{$product->CATEGORY_URL_NAME}/{$product->URL_NAME}" >
+                    <img width="175" height="130" src="/images/product_images/preview/{$product->PREVIEW_FILENAME}" />
+                </a>
+            </div>
+            <div class="eshop_item_desc">
+            	<h5><a href="/{$lang}/shop/{$product->CATEGORY_URL_NAME}/{$product->URL_NAME}">{$product->NAME}</a></h5>
+                <p class="text">{_Cena} - <span class="important">{if $lang=='cs'}{$product->PRICE} Kč{else}€{$product->PRICE_EU} | ${$product->PRICE_USD}{/if}</span></p>
+                <p class="text">{$product->SHORT_TEXT|noescape}</p>
+                <form action="{link addProduct! $product->ID_PRODUCT}" method="post">
+            	<input type="text" name="count" value="1" class="item_count"/>
+                {if !empty( $product['variants'])}
+                    <select name="variant" class="eshop_shopping_cart_select">
+                    {foreach $product['variants'] as $key=>$variant}
+                        <option value="{$key}" >{$variant}</option>
+                    {/foreach}
+                    </select>
+                {/if}
+                <div class="eshop_shopping_cart"><input type="submit" class="eshop_shopping_cart_button" value="{_messages.shop.to_basket}"/></div>
+                </form>
+            </div>
+        </div>
+        {/foreach}
+</div>

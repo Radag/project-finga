@@ -1,0 +1,34 @@
+{block content}
+<script type="text/javascript" >
+$(document).ready(function () {   
+    $("#container").pwi({
+        username: '115723864988738267298'
+    });
+});
+</script>
+<div id="content_left_text">
+        <h1>{_galery}</h1>
+         <div class="gallery_menu_pos">
+            <ul class="gallery_menu">
+            	<li><span class="gallery_menu_active">{_fotogalery}</span></li>
+                <li>|</li>
+                <li><a href="/galerie/video/{$actualYear}">{_videogalery}</a></li>
+            </ul>
+        </div>
+
+        <div class="gallery_menu_pos">
+            <ul class="gallery_menu">
+                {for $c=$actualYear; $c>=2009; $c--}
+            	<li>
+                  {if $year== $c}
+                    <span class="gallery_menu_active">{$c}</span>
+                  {else}
+                    <a href="/galerie/foto/{$c}">{$c}</a>
+                  {/if}
+                </li>
+                <li>|</li>
+                {/for}
+            </ul>
+        </div>
+    	<div id="container"></div>
+</div>

@@ -1,0 +1,18 @@
+{block content}
+<div id="content_left_text">
+    <h1>{_distribution}</h1>
+    {ifset $distributions}
+    {foreach $distributions as $distribution}
+    <p class="invisible_divider"></p>
+    <div class="distributor">
+        <div class="distributor_logo"><img src="/images/distribution/{$distribution->FILENAME}" width="166"/></div>
+
+        <div class="distributor_info">
+            <div class="distributor_name">{$distribution->NAME}</div>
+            {$distribution->TEXT|noescape}
+            <p><a href="http://{$distribution->LINK}" class="distributor_link">{$distribution->LINK}</a></p>
+        </div>
+    </div>
+    {/foreach}
+    {/ifset}
+</div>

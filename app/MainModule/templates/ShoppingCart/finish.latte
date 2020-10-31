@@ -1,0 +1,70 @@
+{block content}
+<div id="content_left_text">
+    <h1>{_messages.shop.order}</h1>
+    <div class="order_phase_inactive">
+        {_messages.shop.basket}
+    </div>
+    <div class="order_phase_inactive">
+        {_messages.shop.paymet_delivery}
+    </div>
+    <div class="order_phase_active">
+        {_messages.shop.finish_order}
+    </div>
+    <table class="order_list">
+        <tr class="cart_item_header">
+            <th class="cart_header_2">
+                {_messages.shop.items}
+            </th>
+            <th class="cart_header_3">
+                {_messages.shop.number}
+            </th>
+            <th class="cart_header_4">
+                {_messages.shop.variant}
+            </th>
+            <th class="cart_header_5">
+                {_messages.shop.price}
+            </th>
+            <th></th>
+        </tr>
+
+        <tr><td class="cart_header_divider" colspan="5"></td> </tr>
+        {foreach $products as $product}
+        {if !empty($product)}
+        <tr class="cart_item_odd">
+            <td><a href="/{$lang}/shop/{$product->URL_CATEGORY}/{$product->URL_NAME}">{$product->NAME}</a></td>
+            <td>{$product->COUNT}</td>
+            <td>{$product->VARIANT_NAME}</td>
+            {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}
+            <td>{$product->PRICE * $product->COUNT} Kč</td>
+            {elseif $order->PAYMENT_TYPE == 3}
+            <td>€{$product->PRICE_EU * $product->COUNT}</td>
+            {elseif $order->PAYMENT_TYPE == 4}
+            <td>${$product->PRICE_USD * $product->COUNT}</td>
+            {/if}
+        </tr>
+        {/if}
+        {/foreach}
+    </table>
+
+    <div class="order_title">{_messages.shop.payment_methods}</div>
+    <p class="text">{if $order->PAYMENT_TYPE == 1}{_ptypes.transfer} ({$paymentCost->PAYMENT_TRA} Kč){elseif $order->PAYMENT_TYPE == 3}{_}Přes paypal{/_} (€{$paymentCost->PAYMENT_PAYPAL_EU}){elseif $order->PAYMENT_TYPE == 5}{_}Dobírkou (Slovensko){/_} ({$paymentCost->PAYMENT_COD_SK} Kč){elseif $order->PAYMENT_TYPE == 4}{_}Přes paypal{/_} (${$paymentCost->PAYMENT_PAYPAL_USD}){else}{_}Dobírkou (Česká republika){/_} ({$paymentCost->PAYMENT_COD} Kč){/if}</p>
+    <div class="order_title">{_messages.shop.address_customer}</div>
+    <ul>
+        <li class="list">{$order->NAME} {$order->SURNAME}</li>
+        <li class="list">{$order->STREET}</li>
+        <li class="list">{$order->CITY} {$order->ZIP}</li>
+        <li class="list">{$order->STATE}</li>
+        <li class="list">{$order->EMAIL}</li>
+        <li class="list">{$order->PHONE}</li>
+    </ul>
+    <div class="order_title">{_messages.shop.notice}</div>
+    <p class="text">{$order->NOTE}</p>
+    <div id="order_overall">{_messages.shop.final_price} {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}{$finalPrice} Kč{elseif $order->PAYMENT_TYPE == 3}€{$finalPrice}{elseif $order->PAYMENT_TYPE == 4}${$finalPrice}{/if}</div>
+
+    <div id="order_move">
+        <div id="button_back"><div class="button_normal"><a href="/{$lang}/shopping-cart/payment">« {_back}</a></div></div>
+        {form finishOrderForm}
+        <div id="button_next">{input send}</div>
+        {/form}
+    </div>
+</div>

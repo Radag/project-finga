@@ -1,0 +1,49 @@
+{block content}
+<div id="contentWrapper">
+    <h2>Nový obrázek na úvodní stranu</h2>
+    
+    <div id="tabs">
+        <ul>
+            <li><a href="#tab-cz">Česká verze</a></li>
+            <li><a href="#tab-en">Anglická verze</a></li>
+        </ul>
+        <div id="tab-cz">
+        {form newFrontCzImageForm}
+        <ul class="errors" n:if="$form->hasErrors()">
+                <li n:foreach="$form->errors as $error">{$error}</li>
+        </ul>
+
+        <table>
+            <tr>
+                <td>{label image /}</td>
+                <td>{input image}</td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: right;">{input send}</td>
+            </tr>
+        </table>
+        {/form}
+        </div>
+        <div id="tab-en">
+        {form newFrontEnImageForm}
+        <ul class="errors" n:if="$form->hasErrors()">
+                <li n:foreach="$form->errors as $error">{$error}</li>
+        </ul>
+
+        <table>
+            <tr>
+                <td>{label image /}</td>
+                <td>{input image}</td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: right;">{input send}</td>
+            </tr>
+        </table>
+        {/form}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+{block content}
+<div id="content_left_text">
+    <h1>{_list_of_orders}</h1>
+<table class="orders">
+    <tr class="orders_header_line">
+        <th class="orders_header_1">
+            {_order_number}
+        </th>
+        <th class="orders_header_2">
+            {_date}
+        </th>
+        <th class="orders_header_3">
+            {_num_items}
+        </th>
+        <th class="orders_header_4">
+            {_summ_price}
+        </th>
+
+    </tr>
+
+    <tr><td class="cart_header_divider" colspan="4"></td> </tr>
+    {foreach $orders as $order}
+    <tr class="orders_row_odd">
+        <td class="fst_column"><a href="/{$lang}/objednavka/{$order->ID_ORDER}">{$order->ID_ORDER}</a></td>
+        <td>{$order->EDIT_DATE|date:'%d.%m.%Y %H:%m'}</td>
+        <td>{$order->COUNT}</td>
+        {if $order->PAYMENT_TYPE == 1 || $order->PAYMENT_TYPE == 2 || $order->PAYMENT_TYPE == 5}
+        <td>{$order->FINAL_PRICE} Kč</td>
+        {elseif $order->PAYMENT_TYPE == 3}
+        <td>€{$order->FINAL_PRICE}</td>
+        {elseif $order->PAYMENT_TYPE == 4}
+        <td>${$order->FINAL_PRICE}</td>
+        {/if}
+    </tr>
+    {/foreach}
+</table></div>

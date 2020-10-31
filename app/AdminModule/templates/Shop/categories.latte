@@ -1,0 +1,40 @@
+{block content}
+<h2>Kategorie</h2>
+<div id="contentWrapper">
+    {form newCategoryForm}
+    <ul class="errors" n:if="$form->hasErrors()">
+            <li n:foreach="$form->errors as $error">{$error}</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>{label name_cz /}</td>
+            <td>{input name_cz}</td>
+
+        </tr>
+        <tr>
+            <td>{label name_en /}</td>
+            <td>{input name_en}</td>
+
+        </tr>
+        <tr>
+            <td>{label parent /}</td>
+            <td>{input parent}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align: right;">{input send}</td>
+        </tr>
+    </table>
+    {/form}
+    <br/>
+    {foreach $categories as $category}
+    <div class="listRow ui-widget-header ui-corner-all">{$category->NAME_CZ} | {$category->NAME_EN} {if $category->PARENT_NAME}| Hlavní kategorie:{$category->PARENT_NAME}{/if}
+    <a class="button fright" href="{link editCategory $category->ID}">změnit</a>
+    {if $category->STATUS == 0}
+    <a class="button fright" href="{link deleteCategory! $category->ID}">smazat</a></div>
+    {else}
+    <a class="button fright" href="{link renewCategory! $category->ID}">obnovit</a></div>
+    {/if}
+    {/foreach}
+</div>

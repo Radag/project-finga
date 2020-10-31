@@ -1,0 +1,35 @@
+{block content}
+<div id="contentWrapper">
+<h2>Seznam produktů</h2>
+<form id="filterForm" action="" method="get">
+    Filtrovat :
+    <div id="filter">
+        <input type="checkbox" name="active" id="filterActive" value="1" {if $filter['active']==1}checked="checked"{/if}/><label for="filterActive">aktivni</label>
+        <input type="checkbox" name="inactive" id="filterInactive" value="1" {if $filter['inactive']==1}checked="checked"{/if}/><label for="filterInactive">neaktivni</label>
+        <input type="checkbox" name="deleted" id="filterDeleted" value="1" {if $filter['deleted']==1}checked="checked"{/if}/><label for="filterDeleted">zobraz smazané</label>
+    </div>
+</form>
+<div id="itemsList">
+    {foreach $products as $product}
+    <h3>{$product->NAME_CZ}</h3>
+    <div>
+        {$product->SHORT_TEXT_CZ|noescape}
+        <div class="itemFooter">
+            {$product->CATEGORY}&nbsp;|&nbsp;{$product->PRICE} Kč&nbsp;|&nbsp;{$product->INSERT_DATE|date:'%d.%m.%Y'}
+            <span class="buttonWrapper">
+                <a class="button" href="/admin/shop/edit-product/{$product->ID_PRODUCT}">změnit</a>
+                {if $product->STATUS==1}
+                <a class="button" href="{link deleteProduct! $product->ID_PRODUCT}">smazat</a>
+                <a class="button" href="{link inactiveProduct! $product->ID_PRODUCT}">zneaktivnit</a>
+                {else}
+                <a class="button" href="{link renewProduct! $product->ID_PRODUCT}">obnovit</a>
+                {/if}
+            </span>
+        </div>
+    </div>    
+    {/foreach}
+</div>
+<div id="paginator">
+    {control visualPaginator}
+</div>
+</div>

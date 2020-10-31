@@ -1,0 +1,45 @@
+{block content}
+<div id="contentWrapper">
+    <h2>Seznam uživatelů</h2>
+    <form id="filterForm" action="" method="get">
+        Filtrovat :
+        <div id="filter">
+            <input type="checkbox" name="active" id="filterActive" value="1" {if $filter['active']==1}checked="checked"{/if}/><label for="filterActive">aktivni</label>
+            <input type="checkbox" name="admin" id="filterAdmin" value="1" {if $filter['admin']==1}checked="checked"{/if}/><label for="filterAdmin">zobraz adminy</label>
+            <input type="checkbox" name="deleted" id="filterDeleted" value="1" {if $filter['deleted']==1}checked="checked"{/if}/><label for="filterDeleted">zobraz smazané</label>
+        </div>
+    </form>
+    <div id="itemsList">
+        {foreach $users as $userDetail}
+        <h3>{$userDetail->EMAIL}</h3>
+        <div>
+            <table>
+                <tr><td>{$userDetail->NAME} {$userDetail->SURNAME}</td><td>{$userDetail->D_NAME} {$userDetail->D_SURNAME}</td></tr>
+                <tr><td>{$userDetail->STREET}</td><td>{$userDetail->D_STREET}</td></tr>
+                <tr><td>{$userDetail->CITY} {$userDetail->ZIP}</td><td>{$userDetail->D_CITY} {$userDetail->D_ZIP}</td></tr>
+                <tr><td>{$userDetail->STATE}</td><td>{$userDetail->D_STATE}</td></tr>
+                <tr><td>{$userDetail->PHONE}</td><td></td></tr>
+            </table>
+            <br/>
+            <div class="itemFooter">
+                <span class="buttonWrapper">
+                    <a class="button" href="/admin/shop/order-list/?user={$userDetail->EMAIL}&active=1&done=1&canceled=1">objednávky</a>
+                    <a class="button" href="/admin/users/edit-user/{$userDetail->ID_USER}">změnit</a>
+                    {if $userDetail->STATUS == 2}
+                        <a class="button" href="{link restoreUser! $userDetail->ID_USER}">obnovit</a>
+                    {elseif $userDetail->STATUS == 1}
+                        <a class="button" href="{link restoreUser! $userDetail->ID_USER}">zrušit admin</a>
+                        <a class="button" href="{link deleteUser! $userDetail->ID_USER}">smazat</a>
+                    {elseif $userDetail->STATUS == 0}
+                        <a class="button" href="{link promoteAdmin! $userDetail->ID_USER}">admin</a>
+                        <a class="button" href="{link deleteUser! $userDetail->ID_USER}">smazat</a>
+                    {/if}
+                </span>
+            </div>
+        </div>
+        {/foreach}
+    </div>
+    <div id="paginator">
+        {control visualPaginator}
+    </div>
+</div>

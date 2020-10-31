@@ -1,0 +1,442 @@
+# Gettext keys exported by GettextExtractor
+# Created: 2011-11-27T19:58:41+01:00
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+# HomepagePresenter.php:22
+msgid "Heslo:"
+msgstr "Password:"
+
+# ShopPresenter.php:43
+msgid "Jméno a příjmení:"
+msgstr "First Name and Last Name:"
+
+# ShopPresenter.php:46
+msgid "Obec:"
+msgstr "City:"
+
+# ShopPresenter.php:56
+msgid "Objednat"
+msgstr "Order:"
+
+# SignPresenter.php:25
+msgid "Password:"
+msgstr "Password:"
+
+# ShopPresenter.php:51
+msgid "Psč:"
+msgstr "Zip:"
+
+# HomepagePresenter.php:25
+msgid "Registrovat"
+msgstr "Register"
+
+# SignPresenter.php:28
+msgid "Remember me on this computer"
+msgstr "Remember me on this computer"
+
+# SignPresenter.php:30
+msgid "Sign in"
+msgstr "Sign in"
+
+# ShopPresenter.php:49
+msgid "Ulice, číslo domu:"
+msgstr "Street number:"
+
+# SignPresenter.php:22
+msgid "Username:"
+msgstr "Username:"
+
+# HomepagePresenter.php:19
+msgid "Uživatelské jméno:"
+msgstr "Username:"
+
+msgid "Novinky"
+msgstr "News"
+
+msgid "Emailová adresa*"
+msgstr "Email address*"
+
+msgid "Vložte prosím svůj email."
+msgstr "Insert please your email."
+
+msgid "Tento email je již používán"
+msgstr "This email is already in use"
+
+msgid "Email není zadán správně."
+msgstr "Email is incorrect."
+
+msgid "Heslo*"
+msgstr "Password*"
+
+msgid "Prosím zadejte heslo."
+msgstr "Please insert password."
+
+msgid "Heslo musí mít minimálně 5 znaků"
+msgstr "Passwords must be at least 5 characters."
+
+msgid "Potvrzení hesla*"
+msgstr "Password again*"
+
+msgid "Prosím zadejte potvrzení hesla."
+msgstr "Please give password again."
+
+msgid "Hesla nejsou stejná"
+msgstr "Password was incorrect."
+
+msgid "Jméno*"
+msgstr "First Name*"
+
+msgid "Vložte prosím své jméno."
+msgstr "Insert your first name please."
+
+msgid "Příjmení*"
+msgstr "Last Name*"
+
+msgid "Vložte prosím své příjmení."
+msgstr "Insert your last name please."
+
+msgid "Ulice*"
+msgstr "Street address*"
+
+msgid "Vložte prosím ulici."
+msgstr "Insert your street address please."
+
+msgid "Město*"
+msgstr "City*"
+
+msgid "Vložte prosím město."
+msgstr "Insert your city please."
+
+msgid "PSČ*"
+msgstr "ZIP*"
+
+msgid "Vložte prosím PSČ."
+msgstr "Insert your ZIP please."
+
+msgid "Telefon*"
+msgstr "Phone*"
+
+msgid "Vložte prosím telefon."
+msgstr "Insert your phone please."
+
+msgid "Jiná doručovací"
+msgstr "Different delivery"
+
+msgid "Zadejte jméno u doručovací adresy"
+msgstr "Please insert first name in delivery address"
+
+msgid "Zadejte příjmení u doručovací adresy"
+msgstr "Insert please last name in delivery address"
+
+msgid "Zadejte ulici u doručovací adresy"
+msgstr "Insert please street address in delivery address."
+
+msgid "Zadejte město u doručovací adresy"
+msgstr "Insert please city in delivery address"
+
+msgid "Zadejte PSČ u doručovací adresy"
+msgstr "Insert please ZIP in delivery address"
+
+msgid "Souhlas"
+msgstr "Agree"
+
+msgid "Musíte souhlasit s obchodními podmínkami"
+msgstr "You must agree with terms of trade"
+
+msgid "» Odeslat"
+msgstr "» Submit"
+
+msgid "Emailová adresa:"
+msgstr "Email address:"
+
+msgid "Zadejte prosím svůj email."
+msgstr "Insert your email address please."
+
+msgid "Zadejte prosím heslo."
+msgstr "Insert your password please."
+
+msgid "Trvalé přihlášení"
+msgstr "Remember me"
+
+msgid "Přihlásit"
+msgstr "Login"
+
+msgid "Galerie"
+msgstr "Gallery"
+
+msgid "Fotogalerie"
+msgstr "Photogallery"
+
+msgid "Videogalerie"
+msgstr "Videogallery"
+
+msgid "O nás"
+msgstr "About us"
+
+msgid "Distribuce"
+msgstr "Distribution"
+
+msgid "Přihlašovací údaje"
+msgstr "Login information"
+
+msgid "Registrace"
+msgstr "Registration"
+
+msgid "přihlašovací jméno"
+msgstr "login"
+
+msgid "minimálně 5 znaků"
+msgstr "at least 5 characters"
+
+msgid "Fakturační údaje"
+msgstr "Billing Information"
+
+msgid "Dodací adresa (je-li odlišná od fakturační)"
+msgstr "Delivery address (if different from billing)"
+
+msgid "Registrací souhlasím s"
+msgstr "By registering I agree with"
+
+msgid "obchodními podmínkami"
+msgstr "terms and conditions"
+
+msgid "Údaje označené hvězdičkou jsou povinné"
+msgstr "Fields marked with an asterisk are required"
+
+msgid "Tým"
+msgstr "Team"
+
+msgid "Členové"
+msgstr "Members"
+
+msgid "Přihlášení"
+msgstr "Login"
+
+msgid "Zapomenuté heslo"
+msgstr "Lost password"
+
+msgid ""
+"Pokud jste zapomněli své heslo, zadejte vaši emailovou adresu, kterou jste "
+"použili při registraci"
+msgstr "If you forgot your password, enter your email."
+
+msgid "uživatelské jméno"
+msgstr "username"
+
+msgid "Reset hesla"
+msgstr "Password reset"
+
+msgid "Pro váš účet bylo vygenerováno nové heslo a posláno na váš email."
+msgstr "It was generate new passwords for your account and send to your email."
+
+msgid "Odhlásit"
+msgstr "Logout"
+
+msgid "Přihlásit trvale"
+msgstr "Remember me"
+
+msgid "» Přihlásit"
+msgstr "» Login"
+
+msgid "email"
+msgstr "email"
+
+msgid "Heslo"
+msgstr "Password"
+
+msgid "skrýt"
+msgstr "hide"
+
+msgid "Partneři"
+msgstr "Partners"
+
+msgid "Reklama"
+msgstr "Commercial"
+
+msgid "Podpořte nás"
+msgstr "Support us"
+
+msgid "Vytvořeno grafickým studiem asterArts v roce 2011"
+msgstr "Created by design studio AsterArts 2011"
+
+msgid "Kontakt"
+msgstr "Contact"
+
+msgid "Výrobce"
+msgstr "Contact"
+
+msgid "Ks"
+msgstr "Pcs"
+
+msgid "ks"
+msgstr "Pcs"
+
+msgid "Upravit profil"
+msgstr "Edit profile"
+
+msgid "Seznam objednávek"
+msgstr "List of orders"
+
+msgid "Nákupní košík"
+msgstr "Shopping cart"
+
+msgid "Doprava"
+msgstr "Shipping"
+
+msgid "Číslo objednávky"
+msgstr "Order number"
+
+msgid "Datum"
+msgstr "Date"
+
+msgid "Počet položek"
+msgstr "Items number"
+
+msgid "Celková cena"
+msgstr "Final price"
+
+msgid "Celkem"
+msgstr "Total"
+
+msgid "Nové heslo"
+msgstr "New password"
+
+msgid "Potvrzení nového hesla"
+msgstr "New password again"
+
+msgid "Staré heslo"
+msgstr "Old password"
+
+msgid "Špatné staré heslo"
+msgstr "Old password again"
+
+msgid "» Pokračovat"
+msgstr "» Continue"
+
+msgid "Způsob platby"
+msgstr "Method of payment"
+
+msgid " Přes paypal v eu"
+msgstr " Paypal in eur"
+
+msgid "Přes paypal v EU"
+msgstr "Paypal"
+
+msgid " Převodem na účet"
+msgstr " Transfer to account"
+
+msgid " Dobírkou"
+msgstr " Cash on delivery"
+
+msgid "Přes paypal v USD"
+msgstr " Paypal in USD"
+
+msgid "Platba a dodací údaje"
+msgstr "Payment and shipping"
+
+msgid "Dokončení objednávky"
+msgstr "Finish order"
+
+msgid "Zboží"
+msgstr "Item"
+
+msgid "Počet"
+msgstr "Quantity"
+
+msgid "Varianta"
+msgstr "Type"
+
+msgid "Adresa příjemce"
+msgstr "Delivery information"
+
+msgid "Konečná cena včetně poštovného:"
+msgstr "Final price including postage"
+
+msgid "Do košíku"
+msgstr "Buy"
+
+msgid "Nové produkty"
+msgstr "New products"
+
+msgid "Cena"
+msgstr "Price"
+
+msgid "Obchodní podmínky naleznete"
+msgstr "Terms of trade are"
+
+msgid "zde"
+msgstr "here"
+
+msgid "Objednávka"
+msgstr "Order"
+
+msgid "Poznámka"
+msgstr "Notice"
+
+msgid "Zpět"
+msgstr "Back"
+
+msgid "» Objednat!"
+msgstr "» Order!"
+
+msgid "Cena poštovného při placení přes paypal je"
+msgstr "The shipping price for paypal payment is"
+
+msgid "Cena poštovného do ČR při placení přes paypal je"
+msgstr "The shipping price for payment in Eur is"
+
+msgid "a"
+msgstr "and"
+
+msgid "při platbě v USD"
+msgstr "for payment in USD"
+
+msgid "nebo"
+msgstr "or"
+
+msgid "upravit"
+msgstr "edit"
+
+msgid " Přes paypal v usd"
+msgstr " Paypal in usd"
+
+msgid "Dodání a poštovné"
+msgstr "Delivery and postage"
+
+msgid "Odkazy"
+msgstr "Links"
+
+msgid "Stát*"
+msgstr "State*"
+
+msgid "Vložte prosím stát."
+msgstr "Insert state please."
+
+msgid "Přes paypal"
+msgstr "By paypal"
+
+msgid "novější příspěvky"
+msgstr "newer articles"
+
+msgid "starší příspěvky"
+msgstr "older articles"
+
+msgid "Položka byla přidána do"
+msgstr "The item was added to your"
+
+msgid "košíku"
+msgstr "shopping cart"
+
+msgid "Akce"
+msgstr "Remove"

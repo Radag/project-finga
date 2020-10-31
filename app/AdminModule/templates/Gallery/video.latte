@@ -1,0 +1,64 @@
+{block #content}
+<div id="contentWrapper">
+    <h2>Video galerie</h2>
+    {form newVideoForm}
+    <ul class="errors" n:if="$form->hasErrors()">
+            <li n:foreach="$form->errors as $error">{$error}</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>{label name /}</td>
+            <td>{input name}</td>
+
+        </tr>
+        <tr>
+            <td>{label videoId /}</td>
+            <td>{input videoId}</td>
+
+        </tr>
+        <tr>
+            <td>{label year /}</td>
+            <td>{input year}</td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align: right;">{input send}</td>
+        </tr>
+    </table>
+    {/form}
+    <br/>
+    <form id="filterForm" action="" method="get">
+        Filtrovat :
+        <div id="filter">
+            <input type="checkbox" name="active" id="filterActive" value="1" {if $filter['active']==1}checked="checked"{/if}/><label for="filterActive">aktivni</label>
+            <input type="checkbox" name="deleted" id="filterDeleted" value="1" {if $filter['deleted']==1}checked="checked"{/if}/><label for="filterDeleted">zobraz smazané</label>
+        </div>
+    </form>
+    <div id="itemsList">
+        {foreach $allVideos as $video}
+        <h3>{$video->NAME}</h3>
+        <div>
+            <a href="http://www.youtube.com/v/{$video->KEY}?fs=1&amp;autoplay=1" class="video_gallery">
+                <img width="310" src="http://img.youtube.com/vi/{$video->KEY}/0.jpg" />
+            </a>
+            <div class="itemFooter">
+                Identifikátor: {$video->KEY} 
+                <span class="buttonWrapper">
+                    {if $video->STATUS == 0 || $video->STATUS == 1}
+                    <a class="button" href="{link deleteVideo! $video->ID_VIDEO}">smazat</a>
+                    {elseif $video->STATUS == 2 }
+                    <a class="button" href="{link renewVideo! $video->ID_VIDEO}">obnovit</a>
+                    {/if}
+                    {if $video->STATUS == 0}
+                    <a class="button" href="{link highliteVideo! $video->ID_VIDEO}">zobrazit na uvodní straně</a>
+                    {elseif $video->STATUS == 1}
+                    <a class="button" href="{link renewVideo! $video->ID_VIDEO}">odebrat z uvodní strany</a>
+                    {/if}</a>
+                </span>
+            </div>
+        </div>
+        {/foreach}
+    </div>
+</div>

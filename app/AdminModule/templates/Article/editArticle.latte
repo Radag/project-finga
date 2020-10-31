@@ -1,0 +1,67 @@
+{block content}
+<div id="contentWrapper">
+<h2>Editovat článek:</h2>
+{form editArticleForm}
+<ul class="errors" n:if="$form->hasErrors()">
+        <li n:foreach="$form->errors as $error">{$error}</li>
+</ul>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tab-cz">Česká verze</a></li>
+        <li><a href="#tab-en">Anglická verze</a></li>
+    </ul>
+    <div id="tab-cz">
+        <table>
+            <tr>
+                <td>{label title_cz /}</td>
+            </tr>
+            <tr>
+                <td>{input title_cz}</td>
+            </tr>
+            <tr>
+                <td>{label short_text_cz /}</td>
+            </tr>
+            <tr>
+                <td>{input short_text_cz}</td>
+            </tr>
+            <tr>
+                <td>{label text_cz /}</td>
+            </tr>
+            <tr>
+                <td>{input text_cz}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="tab-en">
+        <table>
+            <tr>
+                <td>{label title_en /}</td>
+            </tr>
+            <tr>
+                <td>{input title_en}</td>
+            </tr>
+            <tr>
+                <td>{label short_text_en /}</td>
+            </tr>
+            <tr>
+                <td>{input short_text_en}</td>
+            </tr>
+            <tr>
+                <td>{label text_en /}</td>
+            </tr>
+            <tr>
+                <td>{input text_en}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="formBottomPart" class="ui-widget-content ui-corner-all">
+{ifset $image}
+Stávájící obrázek:
+<img src="/images/article_images/{$image}"/><br/>
+{/ifset}
+Nový obrázek:  {input image}<br/>
+{input send}<br class="clear"/></div>
+{/form} 
+</div>

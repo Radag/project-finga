@@ -1,0 +1,11 @@
+{block content}
+<div id="content_left_text">
+    <h1>{_team}</h1>
+    {$text|noescape}
+    <h2 class="title">{_members}</h2>
+    <ul>
+        {foreach $members as $member}
+            <li class="list">{$member->NAME}</li>
+        {/foreach}
+    </ul>
+</div>

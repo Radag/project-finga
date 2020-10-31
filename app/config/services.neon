@@ -1,0 +1,10 @@
+services:
+    - App\Model\ArticleModel
+    - App\Model\GalleryModel
+    - App\Model\ImageModel
+    - App\Model\OtherModel
+    - App\Model\ShopModel
+    - App\Model\UserModel
+    - App\Model\Authenticator
+    - App\MyValidators
+    - App\Model\FingaSettings

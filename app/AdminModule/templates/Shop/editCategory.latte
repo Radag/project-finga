@@ -1,0 +1,30 @@
+{block content}
+<h2>Kategorie</h2>
+<div id="contentWrapper">
+    {form editCategoryForm}
+    <ul class="errors" n:if="$form->hasErrors()">
+            <li n:foreach="$form->errors as $error">{$error}</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>{label name_cz /}</td>
+            <td>{input name_cz}</td>
+
+        </tr>
+        <tr>
+            <td>{label name_en /}</td>
+            <td>{input name_en}</td>
+
+        </tr>
+        <tr>
+            <td>{label parent /}</td>
+            <td>{input parent}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align: right;">{input send}</td>
+        </tr>
+    </table>
+    {/form}
+</div>

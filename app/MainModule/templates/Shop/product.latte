@@ -1,0 +1,53 @@
+{block content}
+{if !empty($product)}
+<div id="content_left_text">
+    <h1>E-Shop</h1>
+    <div class="eshop_levels">
+        <a href="/shop">{_eshop}</a> » <a href="/{$lang}/shop/{$product->URL_CATEGORY}">{$product->CATEGORY}</a> » {$product->NAME}
+    </div>
+    <div class="item_img_prev">
+        <div class="gallery_image">
+            <a href="/images/product_images/{if !empty($product->FILENAME)}{$product->FILENAME}{/if}" class="image_gallery">
+                <img width="175" height="130" src="/images/product_images/preview/{$product->PREVIEW_FILENAME}" />
+            </a>
+        </div>
+    </div>
+
+    <div class="eshop_item_desc">
+        <h2>{$product->NAME}</h2>
+        <p class="text">{_messages.shop.price} - <span class="important">{if $lang=='cs'}{$product->PRICE} Kč{else}€{$product->PRICE_EU} | ${$product->PRICE_USD}{/if}</span></p>
+        <p class="text">{$product->SHORT_TEXT|noescape}</p>
+        {if $product['CATEGORY_STATUS']==0 && $product['PRODUCT_STATUS']==1}
+            <form action="{link addProduct! $product->ID_PRODUCT}" method="post">
+            <input type="text" value="1" class="item_count" name="count"/>
+            {if !empty( $product['variants'])}
+                <select name="variant" class="eshop_shopping_cart_select">
+                {foreach $product['variants'] as $key=>$variant}
+                    <option value="{$key}" >{$variant}</option>
+                {/foreach}
+                </select>
+            {/if}
+            <div class="eshop_shopping_cart"><input type="submit" class="eshop_shopping_cart_button" value="{_messages.shop.to_basket}" /></div>
+            </form>
+        {else}
+            {if $product['PRODUCT_STATUS']==2}
+                <p class="inactiveProduct">{_messages.shop.product_out_of_order}</p>
+            {else}
+                <p class="inactiveProduct">{_messages.shop.product_unavailable}</p>
+            {/if}
+        {/if}
+    </div>
+
+    <div class="item_desc">
+        <p class="text">{$product->TEXT|noescape}</p>
+    </div>
+    <br/><br/>
+    <div>
+    {foreach $product['imageGallery'] as $image}
+    <a href="/images/product_images/{$image->FILENAME}" rel="image_gallery" class="image_gallery">
+        <img src="/images/product_images/preview/{$image->FILENAME_PR}" alt="{$image->ID_IMAGE}"/>
+    </a>
+    {/foreach}
+    </div>
+</div>
+{/if}

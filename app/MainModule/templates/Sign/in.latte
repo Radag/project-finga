@@ -1,0 +1,41 @@
+{var $robots = noindex}
+{block #content}
+<div id="content_left_text">
+<h1>{_Přihlášení}</h1>
+{foreach $flashes as $flash}
+<p class="{$flash->type}">{$flash->message}</p>
+{/foreach}
+{form signInForm}
+    <div class="register_line">
+        <div class="register_left">
+            {label username /}
+        </div>
+
+        <div class="register_center">
+            {input username}
+        </div>
+        <div class="register_right">
+            {_}přihlašovací jméno{/_}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label password /}
+        </div>
+
+        <div class="register_center">
+            {input password}
+        </div>
+    </div>
+    <div class="register_line">
+        <div class="register_left">
+            {label remember /}
+        </div>
+
+        <div class="register_center">
+            {input remember}
+        </div>
+    </div>
+    <div class="button_reg">{input send}</div>
+{/form}
+</div>

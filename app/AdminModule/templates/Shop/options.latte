@@ -1,0 +1,16 @@
+{block content}
+<div id="contentWrapper">
+<h2>Nastavení e-shopu</h2>
+{form optionsForm}
+<table style="text-align: left">
+    <tr><th style="width: 200px;">{label payment_cod /}</th><td>{input payment_cod}</td></tr>
+    <tr><th>{label payment_tra /}</th><td>{input payment_tra}</td></tr>
+    <tr><th>{label payment_cod_sk /}</th><td>{input payment_cod_sk}</td></tr>
+    <tr><th>{label payment_paypal_eu /}</th><td>{input payment_paypal_eu}</td></tr>
+    <tr><th>{label payment_paypal_usd /}</th><td>{input payment_paypal_usd}</td></tr>
+    <tr><th colspan="2">{label shop_emails /}</th></tr>
+    <tr><td colspan="2">{input shop_emails}</td></tr>
+    <tr><td></td><td>{input send}</td></tr>
+</table>
+{/form}
+</div>
