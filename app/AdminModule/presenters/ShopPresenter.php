@@ -29,6 +29,9 @@ class ShopPresenter extends AdminPresenter {
 	/** @persistent */
     public $deleted = 0;
 
+	/** @persistent */
+	public $name = '';
+
     function handleCancelOrder($id) {
         $this->shopModel->changeOrderStatus($id, Constant::ORDER_CANCELED);
         $this->redirect('this');
@@ -103,6 +106,7 @@ class ShopPresenter extends AdminPresenter {
         $filter['active'] = $this->getParameter('active', 0);
         $filter['deleted'] = $this->getParameter('deleted', '');
         $filter['inactive'] = $this->getParameter('inactive', 0);
+		$filter['name'] = $this->getParameter('name', '');
         if (empty($filter['deleted']) && empty($filter['active']) && empty($filter['inactive'])) {
             $filter['active'] = 1;
         }

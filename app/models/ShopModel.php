@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\Constant;
 use Nette\Utils\Strings;
+use Tracy\Debugger;
 
 /**
  * Model base class.
@@ -217,17 +218,24 @@ class ShopModel extends BaseModel
 
 	public function selectAllProductsCount($filter) {
 
+    	$where = "";
+    	if($filter['name']) {
+			$where = " AND (T1.NAME_CZ LIKE '%" . $filter['name'] . "%' OR T1.NAME_EN LIKE '%" . $filter['name'] . "%')";
+		}
 		$sql = 'SELECT COUNT(*) FROM SHOP_PRODUCTS T1 '
 			. 'JOIN SHOP_CATEGORIES T3 ON T3.ID=T1.ID_CATEGORY '
-			. 'WHERE T1.STATUS IN (' . $this->getProductFilter($filter) . ')';
+			. 'WHERE T1.STATUS IN (' . $this->getProductFilter($filter) . ')' . $where;
 		return $this->db->query($sql)->fetchSingle();
 	}
 
     public function selectAllProducts($filter, $items, $offset) {
-
+		$where = "";
+		if($filter['name']) {
+			$where = " AND (T1.NAME_CZ LIKE '%" . $filter['name'] . "%' OR T1.NAME_EN LIKE '%" . $filter['name'] . "%')";
+		}
         $sql = 'SELECT T1.*, T3.NAME_CZ AS CATEGORY, T1.ID_PRODUCT FROM SHOP_PRODUCTS T1 '
              . 'JOIN SHOP_CATEGORIES T3 ON T3.ID=T1.ID_CATEGORY '
-             . 'WHERE T1.STATUS IN (' . $this->getProductFilter($filter) . ') ORDER BY T1.INSERT_DATE DESC LIMIT ? OFFSET ?';
+             . 'WHERE T1.STATUS IN (' . $this->getProductFilter($filter) . ') ' . $where . ' ORDER BY T1.INSERT_DATE DESC LIMIT ? OFFSET ?';
         return $this->db->query($sql, $items, $offset)->fetchAll();
     }
     

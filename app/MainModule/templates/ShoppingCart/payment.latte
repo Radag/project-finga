@@ -17,10 +17,10 @@
         {input payment_type}
         <br/>
         {if $lang=='cs'}
-        {_}Cena poštovného při placení převodem je{/_} {$paymentCost->PAYMENT_TRA} Kč {_}a při placení dobírkou{/_} {$paymentCost->PAYMENT_COD} Kč.
+        Cena poštovného při placení převodem je {$paymentCost->PAYMENT_TRA} Kč a při placení dobírkou {$paymentCost->PAYMENT_COD} Kč.
         Dobírka do SR stojí {$paymentCost->PAYMENT_COD_SK} Kč.
         {else}
-        {_}Cena poštovného do ČR při placení přes paypal je{/_} {$paymentCost->PAYMENT_PAYPAL_EU} Euro {_a} {$paymentCost->PAYMENT_PAYPAL_USD} USD {_}při platbě v USD{/_}.
+        Price for shipping to Czech Republic using paypal is {$paymentCost->PAYMENT_PAYPAL_EU} Euro or {$paymentCost->PAYMENT_PAYPAL_USD} USD.
         {/if}
         </p>
         <div class="order_title">{_messages.shop.address_customer} (<a href="/{$lang}/shopping-cart/edit-address">{_edit}</a>)</div>

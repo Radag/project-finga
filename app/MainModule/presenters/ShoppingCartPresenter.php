@@ -173,8 +173,13 @@ class ShoppingCartPresenter extends MainPresenter
          */
         protected function createComponentOrderForm(){
 		$form = new \Nette\Application\UI\Form();
-		$form->addSubmit('send', '» Pokračovat')
-                     ->setAttribute('class', 'button');
+			if ($this->lang == 'cs') {
+				$form->addSubmit('send', '» Pokračovat')
+					->setAttribute('class', 'button');
+			} else {
+				$form->addSubmit('send', '» Continue')
+					->setAttribute('class', 'button');
+			}
 		$form->onSuccess[] = [$this, 'orderFormSubmitted'];
                 $form->setTranslator($this->translator);
 		return $form;
@@ -220,16 +225,23 @@ class ShoppingCartPresenter extends MainPresenter
                         ))
                         ->setDefaultValue(Constant::PAY_TRANSFER);
                 } else {
-                    $form->addRadioList('payment_type', 'Způsob platby', array(
-                            Constant::PAY_PAYPAL_EU => ' Přes paypal v eu',
-                            Constant::PAY_PAYPAL_USD => ' Přes paypal v usd',
+                    $form->addRadioList('payment_type', 'Payment type', array(
+                            Constant::PAY_PAYPAL_EU => ' Paypal in €',
+                            Constant::PAY_PAYPAL_USD => ' Paypal in $',
                         ))
                         ->setDefaultValue(Constant::PAY_PAYPAL_EU);
                 }
-                $form->addTextArea('note', 'Poznámka')
+                $form->addTextArea('note', 'messages.shop.notice')
                      ->setAttribute('class', 'order_note');
-		$form->addSubmit('send', '» Pokračovat')
-                     ->setAttribute('class', 'button');
+			if ($this->lang == 'cs') {
+				$form->addSubmit('send', '» Pokračovat')
+					->setAttribute('class', 'button');
+			} else {
+				$form->addSubmit('send', '» Continue')
+					->setAttribute('class', 'button');
+			}
+
+
 		$form->onSuccess[] = [$this, 'paymentFormSubmitted'];
                 $form->setTranslator($this->translator);
 		return $form;
@@ -363,12 +375,12 @@ class ShoppingCartPresenter extends MainPresenter
 				'body' => (string)$template,
 			];
 			$this->mailgun->sendMail($mailData);
-            //odeslání upozornění
-            $emails = $this->shopModel->getShopEmails();
-            $emails = explode(';', $emails);
-            $template->message = 'Byla zadána nová objednávka č. ' . $order->ID_ORDER . '.';
-              foreach($emails as $email) {
-                if(!empty($email)) {
+			//odeslání upozornění
+			$emails = $this->shopModel->getShopEmails();
+			$emails = explode(';', $emails);
+			$template->message = 'Byla zadána nová objednávka č. ' . $order->ID_ORDER . '.';
+			foreach ($emails as $email) {
+				if (!empty($email)) {
 					$mailData = (object)[
 						'from' => 'Finga Fingerboards <' . Constant::NOREPLY_EMAIL . '>',
 						'to' => $email,
@@ -376,7 +388,7 @@ class ShoppingCartPresenter extends MainPresenter
 						'body' => (string)$template,
 					];
 					$this->mailgun->sendMail($mailData);
-                }
-            }
+				}
+			}
         }
 }

@@ -2,7 +2,8 @@
 <div id="contentWrapper">
 <h2>Seznam produktů</h2>
 <form id="filterForm" action="" method="get">
-    Filtrovat :
+    Filtr :
+    <input style="width: 220px;" type="text" class="text" value="{$filter['name']}" name="name"/>
     <div id="filter">
         <input type="checkbox" name="active" id="filterActive" value="1" {if $filter['active']==1}checked="checked"{/if}/><label for="filterActive">aktivni</label>
         <input type="checkbox" name="inactive" id="filterInactive" value="1" {if $filter['inactive']==1}checked="checked"{/if}/><label for="filterInactive">neaktivni</label>
