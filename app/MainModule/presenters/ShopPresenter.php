@@ -14,6 +14,9 @@ class ShopPresenter extends MainPresenter
     public function startup() {
         parent::startup();
         $this->template->menuActive = 'shop';
+        if($this->lang == 'en') {
+			$this->redirectUrl("https://fingafingerboards.bigcartel.com");
+		}
     }
 
     function handleAddProduct($id) {
